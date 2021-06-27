@@ -1,0 +1,229 @@
+.header {
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    // default styling for all logos
+    .logo {
+        font-family: Antonio;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 36px;
+        letter-spacing: -1.05px;
+        text-transform: uppercase;
+        text-align: center;
+        color: $white;
+
+        &__mobile {
+            padding: 16px 24px;
+        }
+
+        &__tablet {
+            padding-top: 32px;
+        }
+
+        &__desktop {
+            width: 50%;
+            text-align: left;
+            padding-left: 32px;
+        }
+    }
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .border-bottom {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        order: 1;
+    }
+
+    .toggle-item {
+        width: 100%;
+        display: none;
+        order: 3;
+        padding: 20px 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+        &.active {
+            display: flex;
+        }
+    }
+
+    //the first mobile menu item, adds a space on top
+    .first {
+        padding-top: 44px;
+        border: 0;
+    }
+
+
+    a {
+        font-family: Spartan;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 25px;
+        /* identical to box height, or 167% */
+
+        letter-spacing: 1.36364px;
+        text-transform: uppercase;
+
+        color: $white;
+    }
+
+    .fa-chevron-right {
+        opacity: 0.4;
+    }
+
+    .dot {
+        height: 20px;
+        width: 20px;
+        margin-right: 25px;
+        border-radius: 50%;
+        display: inline-block;
+
+        &.mercury {
+            background: $mercury;
+        }
+        &.venus {
+            background: $venus;
+        }
+        &.earth {
+            background: $earth;
+        }
+        &.mars {
+            background: $mars;
+        }
+        &.jupiter {
+            background: $jupiter;
+        }
+        &.saturn {
+            background: $saturn;
+        }
+        &.uranus {
+            background: $uranus;
+        }
+        &.neptune {
+            background: $neptune;
+        }
+    }
+
+    .toggle {
+        order: 0;
+
+        &.toggle-active {
+            opacity: 0.25;
+        }
+    }
+
+    .bars {
+        background: $white;
+        display: block;
+        height: 3px;
+        width: 24px;
+        position: relative;
+        transition: background .2s ease-out;
+        margin: 0 24px;
+
+        &:first-child {
+            margin-bottom: 4px;
+        }
+
+        &:last-child {
+            margin-top: 4px;
+        }
+    }
+
+    .mobile__menu__details {
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        margin: 0;
+        font-size: 9px;
+
+        li {
+            padding-top: 20px;
+            padding-bottom: 17px;
+            padding-left: 24px;
+            padding-right: 24px;
+            text-align: center;
+
+            a {
+                font-family: Spartan;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 9px;
+                line-height: 10px;
+                /* identical to box height */
+
+                text-align: center;
+                letter-spacing: 1.92857px;
+                text-transform: uppercase;
+
+                color: $white;
+                opacity: 0.75;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+
+    // TABLET STYLES ----------------------------------------------------------------------------------------
+
+    .tablet {
+        display: none;
+
+        @include respond-between(xs, md) {
+            display: block;
+        }
+    }
+
+    .menu__tablet__desktop {
+        
+        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+
+        a {
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 25px;
+            /* identical to box height, or 227% */
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            color: #FFFFFF;
+        }
+
+        @include respond-between(xs, md) {
+            // TABLET
+            justify-content: space-evenly;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+            padding-top: 39px;
+            padding-bottom: 27px;
+        }
+
+        @include respond-above(md) {
+
+            padding-top: 22px;
+            padding-bottom: 27px;
+            justify-content: space-between;
+
+
+            .last {
+                padding-right: 42px;
+            }
+        }
+    }
+}

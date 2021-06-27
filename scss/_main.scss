@@ -1,0 +1,228 @@
+.main {
+    text-align: center;
+    counter-reset: main; // create a custom counter for the menu__details "01, 02, 03' format 
+
+    @include respond-between(xs, md) {
+        padding: 0 2.4375rem;
+    }
+
+    @include respond-above(md) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: right;
+        align-items: center;
+        min-height: 667px;
+        padding: 0 11.45833333333333%;
+        padding-top: 126px;
+    }
+
+    // LEFT SIDE CONTENT ON DESKTOP
+    .planet__img__wrapper {
+        min-height: 304px;
+        min-width: 264px;
+
+        @include respond-above(md) {
+            padding-right: 5.9375rem;
+        }
+
+        .planet-img {
+            height: 6.9375rem;
+            max-width: 6.9375rem;
+            
+            @include respond-between(xs, md) {
+                max-height: 11.5rem;
+                max-width: 11.5rem;
+                height: 100%;
+            }
+
+            @include respond-above(md) {
+                min-height: 290px;
+                min-width: 290px;
+                text-align: right;
+            }
+        }
+    }
+
+    // RIGHT SIDE CONTENT ON DESKTOP
+    .planet {
+
+        @include respond-between(xs, md) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 69px;
+            grid-template-areas: 
+            'title details'
+            'article details'
+            'citation details';
+            text-align: left;
+        }
+
+        .planet__title {
+            grid-area: title;
+            align-self: center;
+            font-family: Antonio;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 40px;
+            line-height: 52px;
+            margin: 0;
+            /* identical to box height */
+    
+            text-align: center;
+            text-transform: uppercase;
+
+            color: #FFFFFF;
+
+            @include respond-between(xs, md) {
+                text-align: left;
+                font-size: 3rem;
+                line-height: 3.875rem;
+            }
+    
+            @include respond-above(md) {
+                text-align: left;
+                font-size: 80px;
+                line-height: 104px;
+            }
+        }
+    
+        .planet__article {
+            grid-area: article;
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 11px;
+            line-height: 22px;
+            /* or 200% */
+    
+            text-align: center;
+            margin: 0;
+            margin-top: 16px;
+            margin-right: 24px;
+            margin-bottom: 32px;
+            margin-left: 24px;
+    
+            color: $white;
+
+            @include respond-between(xs, md) {
+                text-align: left;
+                margin-top: 24px;
+                margin-right: 0;
+                margin-left: 0;
+            }
+    
+            @include respond-above(md) {
+                font-size: 14px;
+                line-height: 25px;
+                text-align: left;
+                margin: 0;
+                margin-top: 23px;
+                max-width: 350px;
+            }
+        }
+    
+        // WIKIPEDIA LINK
+        .planet__citation {
+            grid-area: citation;
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 25px;
+            /* identical to box height, or 208% */
+    
+            color: $white;;
+    
+            mix-blend-mode: normal;
+            opacity: 0.5;
+    
+            a {
+                color: $white;
+                text-decoration: underline;
+                font-weight: bold;
+            }
+    
+            img {
+                mix-blend-mode: normal;
+            }
+
+            @include respond-between(xs, md) {
+                margin: 0;
+            }
+
+            @include respond-above(md) {
+                text-align: left;
+                margin: 0;
+                margin-top: 24px;
+                margin-bottom: 25px;
+            }
+        }
+
+        // OVERVIEW STRUCTURE SURFACE MENU
+        .menu__details__wrapper {
+
+            grid-area: details;
+
+            .menu__details {
+                display: block;
+                width: 100%;
+                list-style: none;
+                font-family: Spartan;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 12px;
+                text-align: left;
+                line-height: 25px;
+                margin: 0;
+                margin-top: 16px;
+                padding: 0;
+        
+                /* identical to box height, or 208% */
+        
+                letter-spacing: 2.57143px;
+                text-transform: uppercase;
+        
+                .detail {
+                    border: 1px solid #ffffff50;
+                    padding-top: 12px;
+                    padding-bottom: 11px;
+        
+                    &:not(:last-child) {
+                        margin-bottom: 16px;
+                    }
+        
+                    &__active {
+                        background-color: $lightBlue;
+                        border-color: transparent;
+                    }
+        
+                    &:hover {
+                        background-color: $darkGrey;
+                        border-color: transparent;
+                    }
+            
+                    &::before {
+                        padding: 0 28px;
+                        counter-increment: main;
+                        content: '0' counter(main);
+            
+                        opacity: 0.5;
+                    }
+        
+                    a {
+                        color: $white;
+                    }
+
+                    @include respond-between(xs, md) {
+                        font-size: 0.5625rem;
+                        //padding: 0.5rem 1.0625rem;
+                        
+                        &::before {
+                            padding: 0.5rem 1.0625rem;
+                        }
+                    }
+                }    
+            }
+        }
+    } 
+}

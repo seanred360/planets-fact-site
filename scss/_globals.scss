@@ -1,0 +1,99 @@
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: block;
+    position: relative;
+    background: url("/assets/background-stars.svg"), $black;
+    font-family: Spartan;
+    background-repeat: no-repeat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0;
+    margin: 0;
+
+    color: #FFFFFF;
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+}
+
+.flex {
+    display: flex;
+
+    &-jc-sb {
+        justify-content: space-between;
+    }
+
+    &-jc-se {
+        justify-content: space-evenly;
+    }
+
+    &-jc-c {
+        justify-content: center;
+    }
+
+    &-ai-c {
+        align-items: center;
+    }
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+//visibility 
+
+.hide-for-mobile {
+    @include respond-below(xs) {
+        display: none;
+    }
+}
+
+.hide-for-tablet {
+    @include respond-between(xs, md) {
+        display: none;
+    }
+}
+  
+.hide-for-desktop {
+    @include respond-above(md){
+        display: none;
+    }
+}
+
+.mobile-only {
+    @include respond-above(xs) {
+        display: none;
+    }
+}
+
+.tablet-only {
+    @include respond-below(xs) {
+        display: none;
+    }
+
+    @include respond-above(md) {
+        display: none;
+    }
+}
+
+.desktop-only {
+    @include respond-below(md) {
+        display: none;
+    }
+}
