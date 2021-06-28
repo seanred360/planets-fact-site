@@ -24,49 +24,49 @@
     <!--  MOBILE MENUS -->
     <nav>
       <ul class="menu flex flex-ai-c flex-jc-sb mobile-only">
-        <li class="logo logo__mobile"><a href="#"></a>The Planets</li>
+        <li class="logo"><a href="#"></a>The Planets</li>
         <li class='border-bottom'></li>
-        <li class="toggle-item first flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot mercury'></span>Mercury</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot venus'></span>Venus</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot earth'></span>Earth</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot mars'></span>Mars</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot jupiter'></span>Jupiter</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot saturn'></span>Saturn</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot uranus'></span>Uranus</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a href="#"><span class='dot neptune'></span>Neptune</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item first flex flex-jc-sb flex-ai-c"><a class='planet-link Mercury 0' href="#"><span class='dot mercury'></span>Mercury</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Venus 1' href="#"><span class='dot venus'></span>Venus</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Earth 2' href="#"><span class='dot earth'></span>Earth</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Mars 3' href="#"><span class='dot mars'></span>Mars</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Jupiter 4' href="#"><span class='dot jupiter'></span>Jupiter</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Saturn 5' href="#"><span class='dot saturn'></span>Saturn</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Uranus 6' href="#"><span class='dot uranus'></span>Uranus</a><i class="fas fa-chevron-right"></i></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link Neptune 7' href="#"><span class='dot neptune'></span>Neptune</a><i class="fas fa-chevron-right"></i></li>
         <li class="toggle mobile-only"><span class='bars'></span><span class='bars'></span><span class='bars'></span></li>
       </ul>
 
-      <nav class='mobile-only'>
-        <ul class='mobile__menu__details flex flex-ai-c flex-jc-sb'>
-          <li class='overview'><a href="#">Overview</a></li>
-          <li class='Structure'><a href="#">Structure</a></li>
-          <li class='Surface'><a href="#">Surface</a></li>
+      <nav class='menu__content__wrapper mobile-only'>
+        <ul class='menu__content flex flex-ai-c flex-jc-sb'>
+          <li class='content-link overview content-active'><a href="#">Overview</a></li>
+          <li class='content-link structure'><a href="#">Structure</a></li>
+          <li class='content-link geology'><a href="#">Surface</a></li>
         </ul>
       </nav>
 
       <!-- TABLET AND DESKTOP MENUS -->
-      <div class="logo logo__tablet tablet-only"><a href="#"></a>The Planets</div>
-      <ul class='menu__tablet__desktop hide-for-mobile flex flex-ai-c'>
-        <li class="logo logo__desktop desktop-only"><a href="#"></a>The Planets</li>
-        <li class="hide-for-mobile"><a href="#">Mercury</a></li>
-        <li class="hide-for-mobile"><a href="#">Venus</a></li>
-        <li class="hide-for-mobile"><a href="#">Earth</a></li>
-        <li class="hide-for-mobile"><a href="#">Mars</a></li>
-        <li class="hide-for-mobile"><a href="#">Jupiter</a></li>
-        <li class="hide-for-mobile"><a href="#">Saturn</a></li>
-        <li class="hide-for-mobile"><a href="#">Uranus</a></li>
-        <li class="last hide-for-mobile"><a href="#">Neptune</a></li>
+      <div class="logo tablet-only"><a href="#"></a>The Planets</div>
+      <ul class='menu hide-for-mobile flex flex-ai-c'>
+        <li class="logo desktop-only"><a href="#"></a>The Planets</li>
+        <li class="hide-for-mobile"><a class='planet-link Mercury 0' href="#">Mercury</a></li>
+        <li class="hide-for-mobile"><a class='planet-link Venus 1' href="#">Venus</a></li>
+        <li class="hide-for-mobile"><a class='planet-link Earth 2' href="#">Earth</a></li>
+        <li class="hide-for-mobile"><a class='planet-link Mars 3' href="#">Mars</a></li>
+        <li class="hide-for-mobile"><a class='planet-link Jupiter 4' href="#">Jupiter</a></li>
+        <li class="hide-for-mobile"><a class='planet-link Saturn 5' href="#">Saturn</a></li>
+        <li class="hide-for-mobile"><a class='planet-link Uranus 6' href="#">Uranus</a></li>
+        <li class="last hide-for-mobile"><a class='planet-link Neptune 7' href="#">Neptune</a></li>
       </ul>
     </nav>
   </header>
 
   
   <main class='main'>
-    <div class="planet__img__wrapper flex flex-ai-c flex-jc-c"><img class='planet-img' src="assets/planet-mercury.svg" alt=""></div>
-    <section class='planet'> 
-      <h1 class='planet__title'>Mercury</h1>
-      <p class='planet__article'>
+    <div class="planet__img__wrapper flex flex-ai-c flex-jc-c"><img class='change-content planet-img mercury' src="assets/planet-mercury.svg" alt=""><img class='planet-geo-img hide' src="assets/geology-mercury.png" alt=""></div>
+    <section class='planet__section'> 
+      <h1 class='change-planet planet__title'>Mercury</h1>
+      <p class='change-content planet__paragraph'>
         Mercury is the smallest planet in the Solar System and the closest 
     to the Sun. Its orbit around the Sun takes 87.97 Earth days, the 
     shortest of all the Sun's planets. Mercury is one of four terrestrial 
@@ -74,14 +74,14 @@
       </p>
 
       <p class='planet__citation'>
-        Source : <a href="https://en.wikipedia.org/wiki/Mercury_(planet)" target='_blank'>Wikipedia <img src="assets/icon-source.svg" alt=""></a>
+        Source : <a class='change-content source' href="https://en.wikipedia.org/wiki/Mercury_(planet)" target='_blank'>Wikipedia <img src="assets/icon-source.svg" alt=""></a>
       </p>
 
-      <nav class='menu__details__wrapper hide-for-mobile flex flex-ai-c flex-jc-se'>
-        <ol class='menu__details flex flex-ai-c flex-jc-se'>
-          <li class='detail overview detail__active '><a href="#">Overview</a></li>
-          <li class='detail Structure'><a href="#">Internal Structure</a></li>
-          <li class='detail Surface'><a href="#">Surface Geology</a></li>
+      <nav class='menu__content__wrapper hide-for-mobile'>
+        <ol class='menu__content flex flex-ai-c flex-jc-se'>
+          <li class='content-link overview content-active'><a href="#">Overview</a></li>
+          <li class='content-link structure'><a href="#">Internal Structure</a></li>
+          <li class='content-link geology'><a href="#">Surface Geology</a></li>
         </ol>
       </nav>
     </section>
@@ -92,22 +92,22 @@
     <div class="stats">
       <div class="stat stats__rotation flex flex-ai-c flex-jc-sb">
         <h4 class='stat__name'>Rotation Time</h4>
-        <p class='stat__value'>58.6 Days</p> 
+        <p class='change-planet rotation stat__value'>58.6 Days</p> 
       </div>
 
       <div class="stat stats__revolution flex flex-ai-c flex-jc-sb">
         <h4 class='stat__name'>Revolution Time</h4>
-        <p class='stat__value'>87.97 Days</p> 
+        <p class='change-planet revolution stat__value'>87.97 Days</p> 
       </div>
 
       <div class="stat stats__radius flex flex-ai-c flex-jc-sb">
         <h4 class='stat__name'>Radius</h4>
-        <p class='stat__value'>2,439.7 KM</p> 
+        <p class='change-planet radius stat__value'>2,439.7 KM</p> 
       </div>
 
       <div class="stat stats__temp flex flex-ai-c flex-jc-sb">
         <h4 class='stat__name'>Average Temp.</h4>
-        <p class='stat__value'>430°c</p> 
+        <p class='change-planet temperature stat__value'>430°c</p> 
       </div>
     </div>
   </footer>

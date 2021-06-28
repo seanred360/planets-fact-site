@@ -18,33 +18,76 @@
 
     // LEFT SIDE CONTENT ON DESKTOP
     .planet__img__wrapper {
-        min-height: 304px;
-        min-width: 264px;
+        min-height: 19rem;
+        min-width: 16.5rem;
+        position: relative;
+
+        @include respond-between(xs, md) {
+            height: 28.75rem;
+            width: 100%;
+        }
 
         @include respond-above(md) {
             padding-right: 5.9375rem;
         }
 
         .planet-img {
-            height: 6.9375rem;
-            max-width: 6.9375rem;
+            position: relative;
+
+            &.mercury {
+                max-height: 6.9375rem;
+                max-width: 6.9375rem;
+            }
+
+            &.venus {
+                min-height: 9.625rem;
+            }
+
             
             @include respond-between(xs, md) {
-                max-height: 11.5rem;
-                max-width: 11.5rem;
-                height: 100%;
+                &.mercury {
+                    max-height: 11.5rem;
+                    max-width: 11.5rem;
+                }
+                &.venus {
+                    max-height: 15.8125rem
+                }
             }
 
             @include respond-above(md) {
-                min-height: 290px;
-                min-width: 290px;
-                text-align: right;
+                &.mercury {
+                    min-height: 290px;
+                    min-width: 290px;
+                }
+                &.venus {
+                    min-height: 25rem;
+                }
+            }
+        }
+
+        .planet-geo-img {
+            position: absolute;
+            height: 6.9375rem;
+            max-width: 6.9375rem;
+            top: 11.5rem;
+            z-index: 2;
+
+            @include respond-between(xs, md) {
+                min-height: 12.4375rem;
+                min-width: 10.1875rem;
+                top: 17.5rem;
+            }
+
+            @include respond-above(md) {
+                min-height: 12.4375rem;
+                min-width: 10.1875rem;
+                top: 14.5rem;
             }
         }
     }
 
     // RIGHT SIDE CONTENT ON DESKTOP
-    .planet {
+    .planet__section {
 
         @include respond-between(xs, md) {
             display: grid;
@@ -86,7 +129,7 @@
             }
         }
     
-        .planet__article {
+        .planet__paragraph {
             grid-area: article;
             font-family: Spartan;
             font-style: normal;
@@ -103,6 +146,7 @@
             margin-left: 24px;
     
             color: $white;
+
 
             @include respond-between(xs, md) {
                 text-align: left;
@@ -159,11 +203,11 @@
         }
 
         // OVERVIEW STRUCTURE SURFACE MENU
-        .menu__details__wrapper {
+        .menu__content__wrapper {
 
             grid-area: details;
 
-            .menu__details {
+            .menu__content {
                 display: block;
                 width: 100%;
                 list-style: none;
@@ -182,18 +226,13 @@
                 letter-spacing: 2.57143px;
                 text-transform: uppercase;
         
-                .detail {
+                .content-link {
                     border: 1px solid #ffffff50;
                     padding-top: 12px;
                     padding-bottom: 11px;
         
                     &:not(:last-child) {
                         margin-bottom: 16px;
-                    }
-        
-                    &__active {
-                        background-color: $lightBlue;
-                        border-color: transparent;
                     }
         
                     &:hover {
@@ -221,7 +260,12 @@
                             padding: 0.5rem 1.0625rem;
                         }
                     }
-                }    
+                } 
+
+                .content-active {
+                    background-color: $lightBlue;
+                    border-color: transparent;
+                }   
             }
         }
     } 

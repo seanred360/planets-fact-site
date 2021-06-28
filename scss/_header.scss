@@ -17,15 +17,15 @@
         text-align: center;
         color: $white;
 
-        &__mobile {
+        @include respond-below(xs) {
             padding: 16px 24px;
         }
 
-        &__tablet {
+        @include respond-between(xs, md) {
             padding-top: 32px;
         }
 
-        &__desktop {
+        @include respond-above(md) {
             width: 50%;
             text-align: left;
             padding-left: 32px;
@@ -34,6 +34,114 @@
 
     .menu {
         flex-wrap: wrap;
+
+        &.hide {
+            display: none;
+        }
+
+        /// MOBILE MENU STYLES---------------------------------
+        .fa-chevron-right {
+            opacity: 0.4;
+        }
+    
+        .dot {
+            height: 20px;
+            width: 20px;
+            margin-right: 25px;
+            border-radius: 50%;
+            display: inline-block;
+    
+            &.mercury {
+                background: $mercury;
+            }
+            &.venus {
+                background: $venus;
+            }
+            &.earth {
+                background: $earth;
+            }
+            &.mars {
+                background: $mars;
+            }
+            &.jupiter {
+                background: $jupiter;
+            }
+            &.saturn {
+                background: $saturn;
+            }
+            &.uranus {
+                background: $uranus;
+            }
+            &.neptune {
+                background: $neptune;
+            }
+        }
+    
+        .toggle {
+            order: 0;
+    
+            &.toggle-active {
+                opacity: 0.25;
+            }
+        }
+    
+        .bars {
+            background: $white;
+            display: block;
+            height: 3px;
+            width: 24px;
+            position: relative;
+            transition: background .2s ease-out;
+            margin: 0 24px;
+    
+            &:first-child {
+                margin-bottom: 4px;
+            }
+    
+            &:last-child {
+                margin-top: 4px;
+            }
+        }
+
+         // TABLET AND DESKTOP MENU STYLES---------------------------------
+         @include respond-above(xs) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+
+            a {
+                font-family: Spartan;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 11px;
+                line-height: 25px;
+                /* identical to box height, or 227% */
+
+                letter-spacing: 1px;
+                text-transform: uppercase;
+
+                color: #FFFFFF;
+            }
+
+            @include respond-between(xs, md) {
+                // TABLET
+                justify-content: space-evenly;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+                padding-top: 39px;
+                padding-bottom: 27px;
+            }
+
+            @include respond-above(md) {
+
+                padding-top: 22px;
+                padding-bottom: 27px;
+                justify-content: space-between;
+
+
+                .last {
+                    padding-right: 42px;
+                }
+            }
+        }
     }
 
     .border-bottom {
@@ -75,70 +183,8 @@
         color: $white;
     }
 
-    .fa-chevron-right {
-        opacity: 0.4;
-    }
 
-    .dot {
-        height: 20px;
-        width: 20px;
-        margin-right: 25px;
-        border-radius: 50%;
-        display: inline-block;
-
-        &.mercury {
-            background: $mercury;
-        }
-        &.venus {
-            background: $venus;
-        }
-        &.earth {
-            background: $earth;
-        }
-        &.mars {
-            background: $mars;
-        }
-        &.jupiter {
-            background: $jupiter;
-        }
-        &.saturn {
-            background: $saturn;
-        }
-        &.uranus {
-            background: $uranus;
-        }
-        &.neptune {
-            background: $neptune;
-        }
-    }
-
-    .toggle {
-        order: 0;
-
-        &.toggle-active {
-            opacity: 0.25;
-        }
-    }
-
-    .bars {
-        background: $white;
-        display: block;
-        height: 3px;
-        width: 24px;
-        position: relative;
-        transition: background .2s ease-out;
-        margin: 0 24px;
-
-        &:first-child {
-            margin-bottom: 4px;
-        }
-
-        &:last-child {
-            margin-top: 4px;
-        }
-    }
-
-    .mobile__menu__details {
+    .menu__content {
 
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
         margin: 0;
@@ -164,7 +210,7 @@
                 text-transform: uppercase;
 
                 color: $white;
-                opacity: 0.75;
+                opacity: 0.50;
 
                 &:hover {
                     opacity: 1;
@@ -172,57 +218,9 @@
             }
         }
 
-        &.hide {
-            display: none;
-        }
-    }
-
-    // TABLET STYLES ----------------------------------------------------------------------------------------
-
-    .tablet {
-        display: none;
-
-        @include respond-between(xs, md) {
-            display: block;
-        }
-    }
-
-    .menu__tablet__desktop {
-        
-        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
-
-        a {
-            font-family: Spartan;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 11px;
-            line-height: 25px;
-            /* identical to box height, or 227% */
-
-            letter-spacing: 1px;
-            text-transform: uppercase;
-
-            color: #FFFFFF;
-        }
-
-        @include respond-between(xs, md) {
-            // TABLET
-            justify-content: space-evenly;
-            width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
-            padding-top: 39px;
-            padding-bottom: 27px;
-        }
-
-        @include respond-above(md) {
-
-            padding-top: 22px;
-            padding-bottom: 27px;
-            justify-content: space-between;
-
-
-            .last {
-                padding-right: 42px;
+        .content-active {
+            a {
+                opacity: 1;
             }
         }
     }

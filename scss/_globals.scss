@@ -58,6 +58,10 @@ body {
 
 //visibility 
 
+.hide {
+    display: none;
+}
+
 .hide-for-mobile {
     @include respond-below(xs) {
         display: none;
