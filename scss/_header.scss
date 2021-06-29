@@ -32,6 +32,7 @@
         }
     }
 
+    // the menu that lets you change planets
     .menu {
         flex-wrap: wrap;
 
@@ -39,7 +40,32 @@
             display: none;
         }
 
+        .planet-link {
+            opacity: 0.75;
+
+            &.hover:hover {
+                opacity: 1;
+
+                &.mercury {
+                    background: $mercury;
+                }
+            }
+        }
+
         /// MOBILE MENU STYLES---------------------------------
+
+        // these are the planet links on mobile
+        .toggle-item {
+            width: 100%;
+            display: none;
+            order: 3;
+            padding: 20px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+    
+            &.active {
+                display: flex;
+            }
+        }
         .fa-chevron-right {
             opacity: 0.4;
         }
@@ -148,18 +174,6 @@
         width: 100%;
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
         order: 1;
-    }
-
-    .toggle-item {
-        width: 100%;
-        display: none;
-        order: 3;
-        padding: 20px 24px;
-        border-top: 1px solid rgba(255, 255, 255, 0.10);
-
-        &.active {
-            display: flex;
-        }
     }
 
     //the first mobile menu item, adds a space on top

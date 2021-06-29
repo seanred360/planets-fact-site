@@ -1,16 +1,17 @@
-const toggle = document.querySelector('.toggle')
-const toggleItem = document.querySelectorAll('.toggle-item')
-const body = document.querySelector('body')
-const menuDetails = document.querySelector('.menu__content')
-const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
-const planetLinks = document.querySelectorAll('.planet-link')
-const contentLinks = document.querySelectorAll('.content-link')
-let currentPlanet = 'Mercury'
+const toggle = document.querySelector('.toggle') //mobile hamburger button
+const toggleItems = document.querySelectorAll('.toggle-item') //mobile menu planet anchor links
+const body = document.querySelector('body') // this is to disable scrolling when the mobile menu is open
+const menuContent = document.querySelector('.menu__content') // overview structure surface menu
+//const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
+const planetLinks = document.querySelectorAll('.planet-link') // planet named menu anchor links
+const contentLinks = document.querySelectorAll('.content-link') // overview or structure or surface anchor link
+let currentPlanet = 'mercury'
+let previousPlanet = '' // we use this to remove color classes before we change to the new planets color scheme
 let currentContent = 'overview'
-let currentIndex = 0
-const changePlanet = document.querySelectorAll('.change-planet')
-const changeContent = document.querySelectorAll('.change-content')
-const planetGeoImg = document.querySelector('.planet-geo-img')
+let currentIndex = 0 // keep track of which planet object in the json file 'planetData' we are accessing
+const changePlanet = document.querySelectorAll('.change-planet') // all elements that change based on the currently selected planet
+const changeContent = document.querySelectorAll('.change-content') // all elements that change based on overview structure or surface
+const planetGeoImg = document.querySelector('.planet-geo-img') // the image that appears when 'surface geology' content is active
 const planetData = {
     planets: [
         {
@@ -208,29 +209,35 @@ const planetData = {
       ]
 }
 
+
+// mobile hamburger button behavior
 toggle.addEventListener('click', () => {
     
     body.classList.toggle('noscroll')
     toggle.classList.toggle('toggle-active')
-    //menuDetails.classList.toggle('hide')
+    menuContent.classList.toggle('hide')
 
-    toggleItem.forEach(ele => {
+    toggleItems.forEach(ele => {
         ele.classList.toggle('active')
     })
 })
 
+// when we click a link
 planetLinks.forEach(link => {
     link.addEventListener('click', () => {
-        switchPlanet(link.classList[1], link.classList[2]) // The 2nd class must always be the planet name
-        toggleItem.forEach(ele => {
-            ele.classList.toggle('active')
-        })
-        body.classList.toggle('noscroll')
+        switchPlanet(link.classList[1], link.classList[2]) // The [2] class must always be the planet name
+        if(link.parentElement.classList.contains('toggle-item')) { // if this is the mobile menu
+            toggleItems.forEach(ele => {
+                ele.classList.toggle('active')
+            })
+            body.classList.toggle('noscroll')
+            menuContent.classList.remove('hide')
+        }
     })
 })
 
+// when we click overview, internal, or surface links
 contentLinks.forEach(link => {
-
     link.addEventListener('click', () => {
         switchContent(link.classList[1])
         contentLinks.forEach(otherLink => {
@@ -241,6 +248,7 @@ contentLinks.forEach(link => {
 })
 
 function switchPlanet(planetName, index) {
+    previousPlanet = currentPlanet
     currentPlanet = planetName;
     currentIndex = index
     switchContent('overview')
@@ -250,6 +258,7 @@ function switchPlanet(planetName, index) {
         console.error('ERROR planet name not found. The planet name must be the second class on the planet-links element. Do not remove or change this element.')
     }
 
+    // change each element to match the currently selected planet
     changePlanet.forEach(ele => {
         if(ele.classList.contains('planet__title')) {
             ele.innerHTML = planetData.planets[index].name
@@ -267,10 +276,18 @@ function switchPlanet(planetName, index) {
             ele.innerHTML = planetData.planets[index].temperature
         }
     })
+
+    // change the coloring to match the current planet only if we are not on mobile
+    contentLinks.forEach(link => {
+        if(!link.classList.contains('mobile')) {
+            link.classList.remove(previousPlanet)
+            link.classList.add(currentPlanet)
+        }
+    })
 }
 
+// change all elements related to the currently selected content
 function switchContent(content) {
-
     changeContent.forEach(ele => {
         switch(content) {
             case 'overview':
@@ -284,7 +301,7 @@ function switchContent(content) {
                 if(ele.classList.contains('planet-img')) { 
                     ele.src = planetData.planets[currentIndex].images.planet
                     ele.classList.remove(ele.classList[2]) //remove the current planet name class with sizing rules
-                    ele.classList.add(planetNames[currentIndex]) //add the new planet name class
+                    ele.classList.add(planetData.planets[currentIndex].name.toLowerCase()) //add the new planet name class. The css styles aren't captialized.
                 }
                 planetGeoImg.classList.add('hide')
                 if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].overview.content

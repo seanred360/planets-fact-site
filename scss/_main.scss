@@ -9,7 +9,6 @@
     @include respond-above(md) {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        justify-items: right;
         align-items: center;
         min-height: 667px;
         padding: 0 11.45833333333333%;
@@ -19,75 +18,107 @@
     // LEFT SIDE CONTENT ON DESKTOP
     .planet__img__wrapper {
         min-height: 19rem;
-        min-width: 16.5rem;
         position: relative;
+        margin-right: auto;
+        margin-left: auto;
 
         @include respond-between(xs, md) {
-            height: 28.75rem;
-            width: 100%;
+            min-height: 28.75rem;
         }
 
-        @include respond-above(md) {
-            padding-right: 5.9375rem;
-        }
-
+        // PLANET IMAGE SIZES -------------------------------
         .planet-img {
-            position: relative;
 
             &.mercury {
-                max-height: 6.9375rem;
-                max-width: 6.9375rem;
+                max-width: 29.6%;
             }
-
             &.venus {
-                min-height: 9.625rem;
+                max-width: 40%;
+            }
+            &.earth {
+                max-width: 46%;
+            }
+            &.mars {
+                max-width: 34.5%;
+            }
+            &.jupiter {
+                max-width: 60%;
+            }
+            &.saturn {
+                max-width: 68%;
+            }
+            &.uranus {
+                max-width: 47%;
+            }
+            &.neptune {
+                max-width: 46%;
             }
 
-            
             @include respond-between(xs, md) {
                 &.mercury {
-                    max-height: 11.5rem;
-                    max-width: 11.5rem;
+                    max-width: 26.6669%;
                 }
                 &.venus {
-                    max-height: 15.8125rem
+                    max-width: 36.7%;
+                }
+                &.earth {
+                    max-width: 41.3%;
+                }
+                &.mars {
+                    max-width: 31%;
+                }
+                &.jupiter {
+                    max-width: 23.0625rem;
+                }
+                &.saturn {
+                    max-width: 61%;
+                }
+                &.uranus {
+                    max-width: 42%;
+                }
+                &.neptune {
+                    max-width: 41.3%;
                 }
             }
 
             @include respond-above(md) {
-                &.mercury {
-                    min-height: 290px;
-                    min-width: 290px;
-                }
-                &.venus {
-                    min-height: 25rem;
+                &.mercury,
+                &.venus,
+                &.earth,
+                &.mars,
+                &.jupiter,
+                &.saturn,
+                &.uranus,
+                &.neptune {
+                    max-width: 100%;
                 }
             }
         }
 
         .planet-geo-img {
             position: absolute;
-            height: 6.9375rem;
-            max-width: 6.9375rem;
-            top: 11.5rem;
+            height: 6rem;
+            top: 60%;
             z-index: 2;
 
             @include respond-between(xs, md) {
-                min-height: 12.4375rem;
-                min-width: 10.1875rem;
-                top: 17.5rem;
+                min-height: calc(12.4375rem - 10%);
+                min-width: calc(10.1875rem - 10%);
+                top: 60%;
             }
 
             @include respond-above(md) {
                 min-height: 12.4375rem;
                 min-width: 10.1875rem;
-                top: 14.5rem;
+                top: 70%;
             }
         }
     }
 
     // RIGHT SIDE CONTENT ON DESKTOP
     .planet__section {
+
+        margin-left: auto;
 
         @include respond-between(xs, md) {
             display: grid;
@@ -219,7 +250,7 @@
                 line-height: 25px;
                 margin: 0;
                 margin-top: 16px;
-                padding: 0;
+                padding: 0;    
         
                 /* identical to box height, or 208% */
         
@@ -252,6 +283,36 @@
                         color: $white;
                     }
 
+                    &.content-active {
+                        border-color: transparent;
+                    }
+
+                    // planet colors -------------------------------------------
+                    &.content-active.mercury {
+                        background-color: $mercury;
+                    }
+                    &.content-active.venus {
+                        background-color: $venus;
+                    } 
+                    &.content-active.earth {
+                        background-color: $earth;
+                    } 
+                    &.content-active.mars {
+                        background-color: $mars;
+                    } 
+                    &.content-active.jupiter {
+                        background-color: $jupiter;
+                    } 
+                    &.content-active.saturn {
+                        background-color: $saturn;
+                    } 
+                    &.content-active.uranus {
+                        background-color: $uranus;
+                    } 
+                    &.content-active.neptune {
+                        background-color: $neptune;
+                    }   
+
                     @include respond-between(xs, md) {
                         font-size: 0.5625rem;
                         //padding: 0.5rem 1.0625rem;
@@ -260,12 +321,7 @@
                             padding: 0.5rem 1.0625rem;
                         }
                     }
-                } 
-
-                .content-active {
-                    background-color: $lightBlue;
-                    border-color: transparent;
-                }   
+                }  
             }
         }
     } 

@@ -77,13 +77,13 @@ body ul {
   }
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .hide-for-tablet {
     display: none;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .hide-for-desktop {
     display: none;
   }
@@ -101,13 +101,13 @@ body ul {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .tablet-only {
     display: none;
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1023px) {
   .desktop-only {
     display: none;
   }
@@ -136,13 +136,13 @@ body ul {
   }
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .header .logo {
     padding-top: 32px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .header .logo {
     width: 50%;
     text-align: left;
@@ -159,6 +159,34 @@ body ul {
   display: none;
 }
 
+.header .menu .planet-link {
+  opacity: 0.75;
+}
+
+.header .menu .planet-link.hover:hover {
+  opacity: 1;
+}
+
+.header .menu .planet-link.hover:hover.mercury {
+  background: #419ebb;
+}
+
+.header .menu .toggle-item {
+  width: 100%;
+  display: none;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header .menu .toggle-item.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .header .menu .fa-chevron-right {
   opacity: 0.4;
 }
@@ -172,35 +200,35 @@ body ul {
 }
 
 .header .menu .dot.mercury {
-  background: #DEF4FC;
+  background: #419ebb;
 }
 
 .header .menu .dot.venus {
-  background: #F7CC7F;
+  background: #eda249;
 }
 
 .header .menu .dot.earth {
-  background: #545BFE;
+  background: #6d2ed5;
 }
 
 .header .menu .dot.mars {
-  background: #FF6A45;
+  background: #d14c32;
 }
 
 .header .menu .dot.jupiter {
-  background: #ECAD7A;
+  background: #d83a34;
 }
 
 .header .menu .dot.saturn {
-  background: #FCCB6B;
+  background: #cd5120;
 }
 
 .header .menu .dot.uranus {
-  background: #65F0D5;
+  background: #1ec1a2;
 }
 
 .header .menu .dot.neptune {
-  background: #497EFA;
+  background: #2d68f0;
 }
 
 .header .menu .toggle {
@@ -249,7 +277,7 @@ body ul {
   }
 }
 
-@media (min-width: 610px) and (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (min-width: 610px) and (max-width: 1023px) {
   .header .menu {
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
@@ -261,7 +289,7 @@ body ul {
   }
 }
 
-@media (min-width: 610px) and (min-width: 992px) {
+@media (min-width: 610px) and (min-width: 1024px) {
   .header .menu {
     padding-top: 22px;
     padding-bottom: 27px;
@@ -280,22 +308,6 @@ body ul {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
-}
-
-.header .toggle-item {
-  width: 100%;
-  display: none;
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
-  padding: 20px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.header .toggle-item.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .header .first {
@@ -356,19 +368,18 @@ body ul {
   counter-reset: main;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .main {
     padding: 0 2.4375rem;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .main {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
-    justify-items: right;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -380,81 +391,110 @@ body ul {
 
 .main .planet__img__wrapper {
   min-height: 19rem;
-  min-width: 16.5rem;
   position: relative;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__img__wrapper {
-    height: 28.75rem;
-    width: 100%;
+    min-height: 28.75rem;
   }
-}
-
-@media (min-width: 992px) {
-  .main .planet__img__wrapper {
-    padding-right: 5.9375rem;
-  }
-}
-
-.main .planet__img__wrapper .planet-img {
-  position: relative;
 }
 
 .main .planet__img__wrapper .planet-img.mercury {
-  max-height: 6.9375rem;
-  max-width: 6.9375rem;
+  max-width: 29.6%;
 }
 
 .main .planet__img__wrapper .planet-img.venus {
-  min-height: 9.625rem;
+  max-width: 40%;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+.main .planet__img__wrapper .planet-img.earth {
+  max-width: 46%;
+}
+
+.main .planet__img__wrapper .planet-img.mars {
+  max-width: 34.5%;
+}
+
+.main .planet__img__wrapper .planet-img.jupiter {
+  max-width: 60%;
+}
+
+.main .planet__img__wrapper .planet-img.saturn {
+  max-width: 68%;
+}
+
+.main .planet__img__wrapper .planet-img.uranus {
+  max-width: 47%;
+}
+
+.main .planet__img__wrapper .planet-img.neptune {
+  max-width: 46%;
+}
+
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__img__wrapper .planet-img.mercury {
-    max-height: 11.5rem;
-    max-width: 11.5rem;
+    max-width: 26.6669%;
   }
   .main .planet__img__wrapper .planet-img.venus {
-    max-height: 15.8125rem;
+    max-width: 36.7%;
+  }
+  .main .planet__img__wrapper .planet-img.earth {
+    max-width: 41.3%;
+  }
+  .main .planet__img__wrapper .planet-img.mars {
+    max-width: 31%;
+  }
+  .main .planet__img__wrapper .planet-img.jupiter {
+    max-width: 23.0625rem;
+  }
+  .main .planet__img__wrapper .planet-img.saturn {
+    max-width: 61%;
+  }
+  .main .planet__img__wrapper .planet-img.uranus {
+    max-width: 42%;
+  }
+  .main .planet__img__wrapper .planet-img.neptune {
+    max-width: 41.3%;
   }
 }
 
-@media (min-width: 992px) {
-  .main .planet__img__wrapper .planet-img.mercury {
-    min-height: 290px;
-    min-width: 290px;
-  }
-  .main .planet__img__wrapper .planet-img.venus {
-    min-height: 25rem;
+@media (min-width: 1024px) {
+  .main .planet__img__wrapper .planet-img.mercury, .main .planet__img__wrapper .planet-img.venus, .main .planet__img__wrapper .planet-img.earth, .main .planet__img__wrapper .planet-img.mars, .main .planet__img__wrapper .planet-img.jupiter, .main .planet__img__wrapper .planet-img.saturn, .main .planet__img__wrapper .planet-img.uranus, .main .planet__img__wrapper .planet-img.neptune {
+    max-width: 100%;
   }
 }
 
 .main .planet__img__wrapper .planet-geo-img {
   position: absolute;
-  height: 6.9375rem;
-  max-width: 6.9375rem;
-  top: 11.5rem;
+  height: 6rem;
+  top: 60%;
   z-index: 2;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__img__wrapper .planet-geo-img {
-    min-height: 12.4375rem;
-    min-width: 10.1875rem;
-    top: 17.5rem;
+    min-height: calc(12.4375rem - 10%);
+    min-width: calc(10.1875rem - 10%);
+    top: 60%;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .main .planet__img__wrapper .planet-geo-img {
     min-height: 12.4375rem;
     min-width: 10.1875rem;
-    top: 14.5rem;
+    top: 70%;
   }
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+.main .planet__section {
+  margin-left: auto;
+}
+
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__section {
     display: -ms-grid;
     display: grid;
@@ -484,7 +524,7 @@ body ul {
   color: #FFFFFF;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__section .planet__title {
     text-align: left;
     font-size: 3rem;
@@ -492,7 +532,7 @@ body ul {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .main .planet__section .planet__title {
     text-align: left;
     font-size: 80px;
@@ -517,7 +557,7 @@ body ul {
   color: white;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__section .planet__paragraph {
     text-align: left;
     margin-top: 24px;
@@ -526,7 +566,7 @@ body ul {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .main .planet__section .planet__paragraph {
     font-size: 14px;
     line-height: 25px;
@@ -560,13 +600,13 @@ body ul {
   mix-blend-mode: normal;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__section .planet__citation {
     margin: 0;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .main .planet__section .planet__citation {
     text-align: left;
     margin: 0;
@@ -623,18 +663,49 @@ body ul {
   color: white;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active {
+  border-color: transparent;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.mercury {
+  background-color: #419ebb;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.venus {
+  background-color: #eda249;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.earth {
+  background-color: #6d2ed5;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.mars {
+  background-color: #d14c32;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.jupiter {
+  background-color: #d83a34;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.saturn {
+  background-color: #cd5120;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.uranus {
+  background-color: #1ec1a2;
+}
+
+.main .planet__section .menu__content__wrapper .menu__content .content-link.content-active.neptune {
+  background-color: #2d68f0;
+}
+
+@media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__section .menu__content__wrapper .menu__content .content-link {
     font-size: 0.5625rem;
   }
   .main .planet__section .menu__content__wrapper .menu__content .content-link::before {
     padding: 0.5rem 1.0625rem;
   }
-}
-
-.main .planet__section .menu__content__wrapper .menu__content .content-active {
-  background-color: #419ebb;
-  border-color: transparent;
 }
 
 footer .stats {
@@ -655,7 +726,7 @@ footer .stats {
   }
 }
 
-@media (min-width: 610px) and (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (min-width: 610px) and (max-width: 1023px) {
   footer .stats {
     grid-gap: 0.6875rem;
     padding: 0 2.4375rem;
@@ -688,7 +759,7 @@ footer .stats .stat {
   }
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   footer .stats .stat {
     padding-left: 0.9375rem;
   }
@@ -715,7 +786,7 @@ footer .stats h4 {
   }
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   footer .stats h4 {
     font-size: 0.5rem;
     line-height: 1rem;
@@ -725,7 +796,7 @@ footer .stats h4 {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   footer .stats h4 {
     font-size: 0.6875em;
     line-height: 1.5625rem;
@@ -751,7 +822,7 @@ footer .stats p {
   color: #FFFFFF;
 }
 
-@media (min-width: 610px) and (max-width: 991px) {
+@media (min-width: 610px) and (max-width: 1023px) {
   footer .stats p {
     font-size: calc((27.087vw - 2.5rem) / 7);
     line-height: 1.9375rem;
@@ -762,7 +833,7 @@ footer .stats p {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   footer .stats p {
     font-size: calc((22.25vw - 2.5rem) / 7);
     line-height: 52px;
