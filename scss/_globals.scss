@@ -52,6 +52,17 @@ body {
     }
 }
 
+.grid {
+    display: grid;
+
+    &-ji-c {
+        justify-items: center;
+    }
+    &-ai-c {
+        align-items: center;
+    }
+}
+
 .noscroll {
     overflow: hidden;
 }

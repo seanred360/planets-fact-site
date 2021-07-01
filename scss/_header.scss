@@ -32,27 +32,30 @@
         }
     }
 
-    // the menu that lets you change planets
-    .menu {
+    // MOBILE PLANET LINKS ---------------------------------
+    // the links that lets you change planets
+    .planet__links.mobile-only {
         flex-wrap: wrap;
 
-        &.hide {
-            display: none;
-        }
-
         .planet-link {
-            opacity: 0.75;
-
-            &.hover:hover {
-                opacity: 1;
-
-                &.mercury {
-                    background: $mercury;
-                }
-            }
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 25px;
+            /* identical to box height, or 167% */
+    
+            letter-spacing: 1.36364px;
+            text-transform: uppercase;
+    
+            color: $white;
         }
 
-        /// MOBILE MENU STYLES---------------------------------
+        .border-bottom {
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+            order: 1;
+        }
 
         // these are the planet links on mobile
         .toggle-item {
@@ -66,10 +69,11 @@
                 display: flex;
             }
         }
+
         .fa-chevron-right {
             opacity: 0.4;
         }
-    
+
         .dot {
             height: 20px;
             width: 20px;
@@ -102,7 +106,7 @@
                 background: $neptune;
             }
         }
-    
+
         .toggle {
             order: 0;
     
@@ -110,7 +114,7 @@
                 opacity: 0.25;
             }
         }
-    
+
         .bars {
             background: $white;
             display: block;
@@ -129,75 +133,168 @@
             }
         }
 
-         // TABLET AND DESKTOP MENU STYLES---------------------------------
-         @include respond-above(xs) {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        &.hide {
+            display: none;
+        }
 
-            a {
-                font-family: Spartan;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 11px;
-                line-height: 25px;
-                /* identical to box height, or 227% */
-
-                letter-spacing: 1px;
-                text-transform: uppercase;
-
-                color: #FFFFFF;
-            }
-
-            @include respond-between(xs, md) {
-                // TABLET
-                justify-content: space-evenly;
-                width: 100%;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.20);
-                padding-top: 39px;
-                padding-bottom: 27px;
-            }
-
-            @include respond-above(md) {
-
-                padding-top: 22px;
-                padding-bottom: 27px;
-                justify-content: space-between;
-
-
-                .last {
-                    padding-right: 42px;
-                }
-            }
+        //the first mobile planet link item, adds a space on top
+        .first {
+            padding-top: 44px;
+            border: 0;
         }
     }
 
-    .border-bottom {
-        width: 100%;
+
+    // TABLET AND DESKTOP PLANET LINKS ---------------------------------
+    // the links that let you change planets
+    .planet__links.hide-for-mobile {
+        grid-template-columns: 50% repeat(8, 1fr);
+        gap: 33px;
+        padding: 0 32px;
+        padding-top: 33px;
+        padding-bottom: 27px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
-        order: 1;
+
+        .logo {
+            margin: 0;
+            margin-left: 0;
+            padding: 0;
+
+            // Make the logo go on top of the planet links and use 100% of the viewport width
+            @include respond-between(xs, md) {
+                grid-column-start: 1;
+                grid-column-end: 9;
+                grid-row-start: 1;
+                grid-row-end: 2;
+            }
+        }
+
+        .planet-link {
+            position: relative;
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 227%; /* identical to box height, or 227% */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            color: #FFFFFF;
+            opacity: 0.75;
+
+            &::after {
+                // for tablet only
+                content: "";
+                display: block;
+                position: absolute;
+                height: 4px;
+                left: 0;
+                right: 0;
+                top: 3rem;
+                opacity: 0;
+            }
+
+            &::before {
+                // for desktop only
+                content: "";
+                display: block;
+                position: absolute;
+                height: 4px;
+                left: 0;
+                right: 0;
+                bottom: 3.75rem;
+                opacity: 0;
+            }
+
+            @include respond-between(xs, md) {
+                &.active {
+                    opacity: 1; // font opacity
+                }
+                &.active::after {
+                    opacity: 1; // pseudo element opacity
+                }
+            }
+
+            @include respond-above(md) {
+                &:hover {
+                    opacity: 1;
+    
+                    @include respond-above(md) {
+                        &::before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include respond-between(xs, md) {
+            // TABLET
+            grid-template-columns: repeat(8, 1fr);
+            gap: 33px;
+            padding: 0 32px;
+            padding-top: 33px;
+            padding-bottom: 27px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        }
+    }
+    // planet link .active effect colors for tablet
+    @include respond-between(xs, md) {
+        .planet-link.mercury:after {
+            background: $mercury;
+        }
+        .planet-link.venus:after {
+            background: $venus;
+        }
+        .planet-link.earth:after {
+            background: $earth;
+        }
+        .planet-link.mars:after {
+            background: $mars;
+        }
+        .planet-link.jupiter:after {
+            background: $jupiter;
+        }
+        .planet-link.saturn:after {
+            background: $saturn;
+        }
+        .planet-link.uranus:after {
+            background: $uranus;
+        }
+        .planet-link.neptune:after {
+            background: $neptune;
+        }
+    }
+    // planet link hover effect colors for desktop
+    @include respond-above(md) {
+        .planet-link.mercury:before {
+            background: $mercury;
+        }
+        .planet-link.venus:before {
+            background: $venus;
+        }
+        .planet-link.earth:before {
+            background: $earth;
+        }
+        .planet-link.mars:before {
+            background: $mars;
+        }
+        .planet-link.jupiter:before {
+            background: $jupiter;
+        }
+        .planet-link.saturn:before {
+            background: $saturn;
+        }
+        .planet-link.uranus:before {
+            background: $uranus;
+        }
+        .planet-link.neptune:before {
+            background: $neptune;
+        }
     }
 
-    //the first mobile menu item, adds a space on top
-    .first {
-        padding-top: 44px;
-        border: 0;
-    }
 
-
-    a {
-        font-family: Spartan;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 15px;
-        line-height: 25px;
-        /* identical to box height, or 167% */
-
-        letter-spacing: 1.36364px;
-        text-transform: uppercase;
-
-        color: $white;
-    }
-
-
+    // The 'overview', 'internal', 'surface' menu
     .menu__content {
 
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
@@ -232,6 +329,7 @@
             }
         }
 
+        // the currently highlighted content menu item
         .content-active {
             a {
                 opacity: 1;

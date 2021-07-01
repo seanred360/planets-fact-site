@@ -2,9 +2,8 @@ const toggle = document.querySelector('.toggle') //mobile hamburger button
 const toggleItems = document.querySelectorAll('.toggle-item') //mobile menu planet anchor links
 const body = document.querySelector('body') // this is to disable scrolling when the mobile menu is open
 const menuContent = document.querySelector('.menu__content') // overview structure surface menu
-//const planetNames = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']
-const planetLinks = document.querySelectorAll('.planet-link') // planet named menu anchor links
 const contentLinks = document.querySelectorAll('.content-link') // overview or structure or surface anchor link
+const planetLinks = document.querySelectorAll('.planet-link') // planet named menu anchor links
 let currentPlanet = 'mercury'
 let previousPlanet = '' // we use this to remove color classes before we change to the new planets color scheme
 let currentContent = 'overview'
@@ -215,25 +214,34 @@ toggle.addEventListener('click', () => {
     
     body.classList.toggle('noscroll')
     toggle.classList.toggle('toggle-active')
-    menuContent.classList.toggle('hide')
+    menuContent.classList.toggle('hide') 
 
-    toggleItems.forEach(ele => {
+    toggleItems.forEach(ele => { // toggle items are the mobile only links
         ele.classList.toggle('active')
     })
 })
 
 // when we click a link
 planetLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        switchPlanet(link.classList[1], link.classList[2]) // The [2] class must always be the planet name
-        if(link.parentElement.classList.contains('toggle-item')) { // if this is the mobile menu
-            toggleItems.forEach(ele => {
-                ele.classList.toggle('active')
-            })
-            body.classList.toggle('noscroll')
-            menuContent.classList.remove('hide')
-        }
-    })
+  link.addEventListener('click', () => {
+    switchPlanet(link.classList[1], link.classList[2]) // The [2] class must always be the planet name
+
+    if(link.parentElement.classList.contains('toggle-item')) { // if on mobile
+      body.classList.toggle('noscroll')
+      menuContent.classList.remove('hide')
+      toggleItems.forEach(item => { // toggle items are the mobile only links
+        item.classList.remove('active') // on mobile, active shows and hides the links
+      })
+    }
+
+    if(link.parentElement.classList.contains('hide-for-mobile')) {  // if on tablet
+      planetLinks.forEach(ele => {     // remove the active class from all links
+        ele.classList.remove('active') // on tablet, the active class shows the ::after element with planet specific colors
+      })
+      link.classList.add('active') // only add active to one link
+    }
+
+  })
 })
 
 // when we click overview, internal, or surface links
