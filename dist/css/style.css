@@ -137,9 +137,9 @@ body ul {
   font-family: Antonio;
   font-style: normal;
   font-weight: normal;
-  font-size: 28px;
-  line-height: 36px;
-  letter-spacing: -1.05px;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.065625rem;
   text-transform: uppercase;
   text-align: center;
   color: white;
@@ -147,13 +147,13 @@ body ul {
 
 @media (max-width: 609px) {
   .header .logo {
-    padding: 16px 24px;
+    padding: 1rem 1.5rem;
   }
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
   .header .logo {
-    padding-top: 32px;
+    padding-top: 2rem;
   }
 }
 
@@ -161,7 +161,7 @@ body ul {
   .header .logo {
     width: 50%;
     text-align: left;
-    padding-left: 32px;
+    padding-left: 2rem;
   }
 }
 
@@ -174,10 +174,10 @@ body ul {
   font-family: Spartan;
   font-style: normal;
   font-weight: bold;
-  font-size: 15px;
-  line-height: 25px;
+  font-size: 0.9375rem;
+  line-height: 167%;
   /* identical to box height, or 167% */
-  letter-spacing: 1.36364px;
+  letter-spacing: 0.0852275rem;
   text-transform: uppercase;
   color: white;
 }
@@ -196,7 +196,7 @@ body ul {
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
-  padding: 20px 24px;
+  padding: 1.25rem 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -211,9 +211,9 @@ body ul {
 }
 
 .header .planet__links.mobile-only .dot {
-  height: 20px;
-  width: 20px;
-  margin-right: 25px;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 1.5625rem;
   border-radius: 50%;
   display: inline-block;
 }
