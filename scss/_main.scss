@@ -10,20 +10,20 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        min-height: 667px;
+        height: 41.6875rem;
         padding: 0 11.45833333333333%;
-        padding-top: 126px;
+        padding-top: 7.875rem;
     }
 
     // LEFT SIDE CONTENT ON DESKTOP
     .planet__img__wrapper {
-        min-height: 19rem;
+        height: 19rem;
         position: relative;
         margin-right: auto;
         margin-left: auto;
 
         @include respond-between(xs, md) {
-            min-height: 28.75rem;
+            height: 28.75rem;
         }
 
         // PLANET IMAGE SIZES -------------------------------
@@ -123,7 +123,7 @@
         @include respond-between(xs, md) {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 69px;
+            column-gap: 4.3125rem;
             grid-template-areas: 
             'title details'
             'article details'
@@ -137,10 +137,9 @@
             font-family: Antonio;
             font-style: normal;
             font-weight: normal;
-            font-size: 40px;
-            line-height: 52px;
+            font-size: 2.5rem;
+            line-height: 3.25rem; /* identical to box height */
             margin: 0;
-            /* identical to box height */
     
             text-align: center;
             text-transform: uppercase;
@@ -155,8 +154,8 @@
     
             @include respond-above(md) {
                 text-align: left;
-                font-size: 80px;
-                line-height: 104px;
+                font-size: 5rem;
+                line-height: 6.5rem;
             }
         }
     
@@ -165,34 +164,29 @@
             font-family: Spartan;
             font-style: normal;
             font-weight: normal;
-            font-size: 11px;
-            line-height: 22px;
-            /* or 200% */
-    
+            font-size: 0.6875rem;
+            line-height: 200%; /* or 200% */
+            
             text-align: center;
-            margin: 0;
-            margin-top: 16px;
-            margin-right: 24px;
-            margin-bottom: 32px;
-            margin-left: 24px;
+            margin: 1rem 1.5rem 2rem 1.5rem; 
     
             color: $white;
 
 
             @include respond-between(xs, md) {
                 text-align: left;
-                margin-top: 24px;
+                margin-top: 1.5rem;
                 margin-right: 0;
                 margin-left: 0;
             }
     
             @include respond-above(md) {
-                font-size: 14px;
-                line-height: 25px;
+                font-size: 0.875rem;
+                line-height: 179%; /* or 179% */
                 text-align: left;
                 margin: 0;
-                margin-top: 23px;
-                max-width: 350px;
+                margin-top: 1.4375rem;
+                max-width: 21.875rem;
             }
         }
     
@@ -202,9 +196,8 @@
             font-family: Spartan;
             font-style: normal;
             font-weight: normal;
-            font-size: 12px;
-            line-height: 25px;
-            /* identical to box height, or 208% */
+            font-size: 0.75rem;
+            line-height: 208%; /* identical to box height, or 208% */
     
             color: $white;;
     
@@ -228,8 +221,8 @@
             @include respond-above(md) {
                 text-align: left;
                 margin: 0;
-                margin-top: 24px;
-                margin-bottom: 25px;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5625rem;
             }
         }
 
@@ -245,25 +238,23 @@
                 font-family: Spartan;
                 font-style: normal;
                 font-weight: bold;
-                font-size: 12px;
+                font-size: 0.75rem;
                 text-align: left;
-                line-height: 25px;
+                line-height: 208%; /* identical to box height, or 208% */
                 margin: 0;
-                margin-top: 16px;
-                padding: 0;    
-        
-                /* identical to box height, or 208% */
+                margin-top: 1rem;
+                padding: 0;   
         
                 letter-spacing: 2.57143px;
                 text-transform: uppercase;
         
                 .content-link {
                     border: 1px solid #ffffff50;
-                    padding-top: 12px;
-                    padding-bottom: 11px;
+                    padding-top: 0.75rem;
+                    padding-bottom: 0.6875rem;
         
                     &:not(:last-child) {
-                        margin-bottom: 16px;
+                        margin-bottom: 1rem;
                     }
         
                     &:hover {
@@ -272,7 +263,7 @@
                     }
             
                     &::before {
-                        padding: 0 28px;
+                        padding: 0 1.75rem;
                         counter-increment: main;
                         content: '0' counter(main);
             
@@ -315,7 +306,6 @@
 
                     @include respond-between(xs, md) {
                         font-size: 0.5625rem;
-                        //padding: 0.5rem 1.0625rem;
                         
                         &::before {
                             padding: 0.5rem 1.0625rem;

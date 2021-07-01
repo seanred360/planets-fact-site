@@ -19,10 +19,10 @@ body {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  line-height: 25px;
+  line-height: 1.5625rem;
   padding: 0;
   margin: 0;
-  color: #FFFFFF;
+  color: white;
 }
 
 body a {
@@ -141,33 +141,14 @@ body ul {
   line-height: 2.25rem;
   letter-spacing: -0.065625rem;
   text-transform: uppercase;
-  text-align: center;
   color: white;
+  padding: 0;
+  margin: 0;
+  padding: 1rem 1.5rem;
 }
 
-@media (max-width: 609px) {
-  .header .logo {
-    padding: 1rem 1.5rem;
-  }
-}
-
-@media (min-width: 610px) and (max-width: 1023px) {
-  .header .logo {
-    padding-top: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .header .logo {
-    width: 50%;
-    text-align: left;
-    padding-left: 2rem;
-  }
-}
-
-.header .planet__links.mobile-only {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+.header .planet__links.mobile-only .top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header .planet__links.mobile-only .planet-link {
@@ -180,24 +161,27 @@ body ul {
   letter-spacing: 0.0852275rem;
   text-transform: uppercase;
   color: white;
-}
-
-.header .planet__links.mobile-only .border-bottom {
+  padding: 1.25rem 0;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
 }
 
 .header .planet__links.mobile-only .toggle-item {
-  width: 100%;
   display: none;
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
-  padding: 1.25rem 1.5rem;
+  margin: 0 1.5rem;
+}
+
+.header .planet__links.mobile-only .toggle-item.blank {
+  padding: 0;
+  padding-top: 1.25rem;
+  border: 0;
+}
+
+.header .planet__links.mobile-only .toggle-item:not(.first) {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header .planet__links.mobile-only .toggle-item.first {
+  padding: 0;
 }
 
 .header .planet__links.mobile-only .toggle-item.active {
@@ -206,8 +190,8 @@ body ul {
   display: flex;
 }
 
-.header .planet__links.mobile-only .fa-chevron-right {
-  opacity: 0.4;
+.header .planet__links.mobile-only .chevron {
+  padding-right: 1rem;
 }
 
 .header .planet__links.mobile-only .dot {
@@ -250,12 +234,6 @@ body ul {
   background: #2d68f0;
 }
 
-.header .planet__links.mobile-only .toggle {
-  -webkit-box-ordinal-group: 1;
-      -ms-flex-order: 0;
-          order: 0;
-}
-
 .header .planet__links.mobile-only .toggle.toggle-active {
   opacity: 0.25;
 }
@@ -263,44 +241,44 @@ body ul {
 .header .planet__links.mobile-only .bars {
   background: white;
   display: block;
-  height: 3px;
-  width: 24px;
+  height: 0.1875rem;
+  width: 1.5rem;
   position: relative;
-  -webkit-transition: background .2s ease-out;
-  transition: background .2s ease-out;
-  margin: 0 24px;
+  margin: 0 1.5rem;
 }
 
 .header .planet__links.mobile-only .bars:first-child {
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .header .planet__links.mobile-only .bars:last-child {
-  margin-top: 4px;
+  margin-top: 0.25rem;
 }
 
 .header .planet__links.mobile-only.hide {
   display: none;
 }
 
-.header .planet__links.mobile-only .first {
-  padding-top: 44px;
-  border: 0;
+.header .planet__links.hide-for-mobile {
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+  -webkit-column-gap: 2.0625rem;
+          column-gap: 2.0625rem;
+  padding: 0 2rem;
+  padding-top: 2.0625rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.header .planet__links.hide-for-mobile {
-  -ms-grid-columns: 50% (1fr)[8];
-      grid-template-columns: 50% repeat(8, 1fr);
-  gap: 33px;
-  padding: 0 32px;
-  padding-top: 33px;
-  padding-bottom: 27px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+@media (min-width: 1024px) {
+  .header .planet__links.hide-for-mobile {
+    -ms-grid-columns: 50% (1fr)[8];
+        grid-template-columns: 50% repeat(8, 1fr);
+    padding-top: 1.375rem;
+  }
 }
 
 .header .planet__links.hide-for-mobile .logo {
   margin: 0;
-  margin-left: 0;
   padding: 0;
 }
 
@@ -312,6 +290,15 @@ body ul {
     -ms-grid-row: 1;
         grid-row-start: 1;
     grid-row-end: 2;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header .planet__links.hide-for-mobile .logo {
+    width: 50%;
+    text-align: left;
+    padding-bottom: 1.6875rem;
   }
 }
 
@@ -320,11 +307,13 @@ body ul {
   font-family: Spartan;
   font-style: normal;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 0.6875rem;
   line-height: 227%;
   /* identical to box height, or 227% */
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
   text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 1.6875rem;
   color: #FFFFFF;
   opacity: 0.75;
 }
@@ -333,10 +322,10 @@ body ul {
   content: "";
   display: block;
   position: absolute;
-  height: 4px;
+  height: 0.25rem;
   left: 0;
   right: 0;
-  top: 3rem;
+  top: 5.5rem;
   opacity: 0;
 }
 
@@ -344,14 +333,17 @@ body ul {
   content: "";
   display: block;
   position: absolute;
-  height: 4px;
+  height: 0.25rem;
   left: 0;
   right: 0;
-  bottom: 3.75rem;
+  bottom: 4.7rem;
   opacity: 0;
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
+  .header .planet__links.hide-for-mobile .planet-link {
+    padding-top: 2.4375rem;
+  }
   .header .planet__links.hide-for-mobile .planet-link.active {
     opacity: 1;
   }
@@ -369,18 +361,6 @@ body ul {
 @media (min-width: 1024px) and (min-width: 1024px) {
   .header .planet__links.hide-for-mobile .planet-link:hover::before {
     opacity: 1;
-  }
-}
-
-@media (min-width: 610px) and (max-width: 1023px) {
-  .header .planet__links.hide-for-mobile {
-    -ms-grid-columns: (1fr)[8];
-        grid-template-columns: repeat(8, 1fr);
-    gap: 33px;
-    padding: 0 32px;
-    padding-top: 33px;
-    padding-bottom: 27px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -441,14 +421,12 @@ body ul {
 .header .menu__content {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   margin: 0;
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 
 .header .menu__content li {
-  padding-top: 20px;
-  padding-bottom: 17px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.0625rem;
   text-align: center;
 }
 
@@ -456,12 +434,13 @@ body ul {
   font-family: Spartan;
   font-style: normal;
   font-weight: bold;
-  font-size: 9px;
-  line-height: 10px;
+  font-size: 0.5625rem;
+  line-height: 0.625rem;
   /* identical to box height */
   text-align: center;
-  letter-spacing: 1.92857px;
+  letter-spacing: 0.120535625rem;
   text-transform: uppercase;
+  padding: 1.75rem 1.5rem 1.5625rem 1.5rem;
   color: white;
   opacity: 0.50;
 }
@@ -494,14 +473,14 @@ body ul {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    min-height: 667px;
+    height: 41.6875rem;
     padding: 0 11.45833333333333%;
-    padding-top: 126px;
+    padding-top: 7.875rem;
   }
 }
 
 .main .planet__img__wrapper {
-  min-height: 19rem;
+  height: 19rem;
   position: relative;
   margin-right: auto;
   margin-left: auto;
@@ -509,7 +488,7 @@ body ul {
 
 @media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__img__wrapper {
-    min-height: 28.75rem;
+    height: 28.75rem;
   }
 }
 
@@ -611,8 +590,8 @@ body ul {
     display: grid;
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
-    -webkit-column-gap: 69px;
-            column-gap: 69px;
+    -webkit-column-gap: 4.3125rem;
+            column-gap: 4.3125rem;
         grid-template-areas: 'title details' 'article details' 'citation details';
     text-align: left;
   }
@@ -626,10 +605,10 @@ body ul {
   font-family: Antonio;
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
-  line-height: 52px;
-  margin: 0;
+  font-size: 2.5rem;
+  line-height: 3.25rem;
   /* identical to box height */
+  margin: 0;
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
@@ -646,8 +625,8 @@ body ul {
 @media (min-width: 1024px) {
   .main .planet__section .planet__title {
     text-align: left;
-    font-size: 80px;
-    line-height: 104px;
+    font-size: 5rem;
+    line-height: 6.5rem;
   }
 }
 
@@ -656,22 +635,18 @@ body ul {
   font-family: Spartan;
   font-style: normal;
   font-weight: normal;
-  font-size: 11px;
-  line-height: 22px;
+  font-size: 0.6875rem;
+  line-height: 200%;
   /* or 200% */
   text-align: center;
-  margin: 0;
-  margin-top: 16px;
-  margin-right: 24px;
-  margin-bottom: 32px;
-  margin-left: 24px;
+  margin: 1rem 1.5rem 2rem 1.5rem;
   color: white;
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__section .planet__paragraph {
     text-align: left;
-    margin-top: 24px;
+    margin-top: 1.5rem;
     margin-right: 0;
     margin-left: 0;
   }
@@ -679,12 +654,13 @@ body ul {
 
 @media (min-width: 1024px) {
   .main .planet__section .planet__paragraph {
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 0.875rem;
+    line-height: 179%;
+    /* or 179% */
     text-align: left;
     margin: 0;
-    margin-top: 23px;
-    max-width: 350px;
+    margin-top: 1.4375rem;
+    max-width: 21.875rem;
   }
 }
 
@@ -693,8 +669,8 @@ body ul {
   font-family: Spartan;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 25px;
+  font-size: 0.75rem;
+  line-height: 208%;
   /* identical to box height, or 208% */
   color: white;
   mix-blend-mode: normal;
@@ -721,8 +697,8 @@ body ul {
   .main .planet__section .planet__citation {
     text-align: left;
     margin: 0;
-    margin-top: 24px;
-    margin-bottom: 25px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5625rem;
   }
 }
 
@@ -737,25 +713,25 @@ body ul {
   font-family: Spartan;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: left;
-  line-height: 25px;
-  margin: 0;
-  margin-top: 16px;
-  padding: 0;
+  line-height: 208%;
   /* identical to box height, or 208% */
+  margin: 0;
+  margin-top: 1rem;
+  padding: 0;
   letter-spacing: 2.57143px;
   text-transform: uppercase;
 }
 
 .main .planet__section .menu__content__wrapper .menu__content .content-link {
   border: 1px solid #ffffff50;
-  padding-top: 12px;
-  padding-bottom: 11px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.6875rem;
 }
 
 .main .planet__section .menu__content__wrapper .menu__content .content-link:not(:last-child) {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .main .planet__section .menu__content__wrapper .menu__content .content-link:hover {
@@ -764,7 +740,7 @@ body ul {
 }
 
 .main .planet__section .menu__content__wrapper .menu__content .content-link::before {
-  padding: 0 28px;
+  padding: 0 1.75rem;
   counter-increment: main;
   content: "0" counter(main);
   opacity: 0.5;
@@ -841,8 +817,8 @@ footer .stats {
   footer .stats {
     grid-gap: 0.6875rem;
     padding: 0 2.4375rem;
-    padding-top: 27px;
-    padding-bottom: 36px;
+    padding-top: 1.6875rem;
+    padding-bottom: 2.25rem;
   }
 }
 
@@ -866,7 +842,7 @@ footer .stats .stat {
     display: block;
     text-align: left;
     padding-left: 1.4375rem;
-    max-width: 255px;
+    max-width: 14.0625rem;
   }
 }
 
@@ -881,7 +857,8 @@ footer .stats h4 {
   font-style: normal;
   font-weight: bold;
   font-size: 0.5rem;
-  line-height: 1rem;
+  line-height: 200%;
+  /* identical to box height, or 200% */
   margin: 0;
   letter-spacing: 0.0454545625em;
   text-transform: uppercase;
@@ -900,7 +877,6 @@ footer .stats h4 {
 @media (min-width: 610px) and (max-width: 1023px) {
   footer .stats h4 {
     font-size: 0.5rem;
-    line-height: 1rem;
     letter-spacing: 0.0454545625rem;
     padding-top: 1rem;
     padding-bottom: 0.375rem;
@@ -910,7 +886,8 @@ footer .stats h4 {
 @media (min-width: 1024px) {
   footer .stats h4 {
     font-size: 0.6875em;
-    line-height: 1.5625rem;
+    line-height: 227%;
+    /* identical to box height, or 227% */
     letter-spacing: 0.0625rem;
     padding: 0;
     padding-top: 1.25rem;
@@ -947,11 +924,11 @@ footer .stats p {
 @media (min-width: 1024px) {
   footer .stats p {
     font-size: calc((22.25vw - 2.5rem) / 7);
-    line-height: 52px;
+    line-height: 3.25rem;
     text-align: left;
     letter-spacing: -0.09375rem;
     padding: 0;
-    padding-bottom: 27px;
+    padding-bottom: 1.6875rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

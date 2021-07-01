@@ -1,7 +1,6 @@
 footer {
 
     .stats {
-
         padding: 0 1.5rem;
         padding-bottom: 2.9375rem;
 
@@ -16,8 +15,8 @@ footer {
             @include respond-between(xs, md) {
                 grid-gap: 0.6875rem;
                 padding: 0 2.4375rem;
-                padding-top: 27px;
-                padding-bottom: 36px;
+                padding-top: 1.6875rem;
+                padding-bottom: 2.25rem;
             }
         }
 
@@ -37,7 +36,7 @@ footer {
                 display: block;
                 text-align: left;
                 padding-left: 1.4375rem;
-                max-width: 255px;
+                max-width: 14.0625rem;
             }
 
             @include respond-between(xs, md) {
@@ -50,7 +49,7 @@ footer {
             font-style: normal;
             font-weight: bold;
             font-size: 0.5rem;
-            line-height: 1rem;
+            line-height: 200%; /* identical to box height, or 200% */ 
             margin: 0;
             
             letter-spacing: 0.0454545625em;
@@ -67,7 +66,6 @@ footer {
 
             @include respond-between(xs, md) {
                 font-size: 0.5rem;
-                line-height: 1rem;
                 letter-spacing: 0.0454545625rem;
                 padding-top: 1rem;
                 padding-bottom: 0.375rem;
@@ -75,7 +73,7 @@ footer {
 
             @include respond-above(md) {
                 font-size: 0.6875em;
-                line-height: 1.5625rem;
+                line-height: 227%; /* identical to box height, or 227% */
                 letter-spacing: 0.0625rem;
                 padding: 0;
                 padding-top: 1.25rem;
@@ -87,11 +85,9 @@ footer {
             font-style: normal;
             font-weight: normal;
             font-size: 1.25rem;
-            //font-size: calc((44vw - 1.25rem) / 7);
             line-height: 1.625rem;
             margin: 0;
-            padding-right: 1.5rem;
-            /* identical to box height */
+            padding-right: 1.5rem; /* identical to box height */
 
             text-align: right;
             letter-spacing: -0.046875em;
@@ -100,7 +96,6 @@ footer {
             color: #FFFFFF;
 
             @include respond-between(xs, md) {
-                //font-size: 1.5rem;
                 font-size: calc((27.087vw - 2.5rem) / 7);
                 line-height: 1.9375rem;
                 letter-spacing: 0.05625rem;
@@ -110,13 +105,12 @@ footer {
             }
 
             @include respond-above(md) {
-                //font-size: 2.5rem;
                 font-size: calc((22.25vw - 2.5rem) / 7);
-                line-height: 52px;
+                line-height: 3.25rem;
                 text-align: left;
                 letter-spacing: -0.09375rem;
                 padding: 0;
-                padding-bottom: 27px;
+                padding-bottom: 1.6875rem;
             }
         }
     }

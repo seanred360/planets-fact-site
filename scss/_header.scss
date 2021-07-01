@@ -1,5 +1,6 @@
 .header {
 
+    // remove default styling
     ul {
         padding: 0;
         margin: 0;
@@ -14,29 +15,20 @@
         line-height: 2.25rem;
         letter-spacing: -0.065625rem;
         text-transform: uppercase;
-        text-align: center;
         color: $white;
-
-        @include respond-below(xs) {
-            padding: 1rem 1.5rem;
-        }
-
-        @include respond-between(xs, md) {
-            padding-top: 2rem;
-        }
-
-        @include respond-above(md) {
-            width: 50%;
-            text-align: left;
-            padding-left: 2rem;
-        }
+        padding: 0;
+        margin: 0;
+        padding: 1rem 1.5rem;
     }
 
     // MOBILE PLANET LINKS ---------------------------------
     // the links that lets you change planets
     .planet__links.mobile-only {
-        flex-wrap: wrap;
 
+        .top {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        }
+    
         .planet-link {
             font-family: Spartan;
             font-style: normal;
@@ -46,29 +38,34 @@
             letter-spacing: 0.0852275rem;
             text-transform: uppercase;
             color: $white;
-        }
-
-        .border-bottom {
+            padding: 1.25rem 0;
             width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
-            order: 1;
         }
 
-        // these are the planet links on mobile
         .toggle-item {
-            width: 100%;
             display: none;
-            order: 3;
-            padding: 1.25rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.10);
+            margin: 0 1.5rem;
+
+            &.blank {
+                padding: 0;
+                padding-top: 1.25rem;
+                border: 0;
+            }
+
+            &:not(.first) {
+                border-top: 1px solid rgba(255, 255, 255, 0.10);
+            }
+            &.first {
+                padding: 0;
+            }
     
             &.active {
                 display: flex;
             }
         }
 
-        .fa-chevron-right {
-            opacity: 0.4;
+        .chevron {
+            padding-right: 1rem;
         }
 
         .dot {
@@ -105,8 +102,7 @@
         }
 
         .toggle {
-            order: 0;
-    
+            
             &.toggle-active {
                 opacity: 0.25;
             }
@@ -115,29 +111,22 @@
         .bars {
             background: $white;
             display: block;
-            height: 3px;
-            width: 24px;
+            height: 0.1875rem;
+            width: 1.5rem;
             position: relative;
-            transition: background .2s ease-out;
-            margin: 0 24px;
+            margin: 0 1.5rem;
     
             &:first-child {
-                margin-bottom: 4px;
+                margin-bottom: 0.25rem;
             }
     
             &:last-child {
-                margin-top: 4px;
+                margin-top: 0.25rem;
             }
         }
 
         &.hide {
             display: none;
-        }
-
-        //the first mobile planet link item, adds a space on top
-        .first {
-            padding-top: 44px;
-            border: 0;
         }
     }
 
@@ -145,16 +134,21 @@
     // TABLET AND DESKTOP PLANET LINKS ---------------------------------
     // the links that let you change planets
     .planet__links.hide-for-mobile {
-        grid-template-columns: 50% repeat(8, 1fr);
-        gap: 33px;
-        padding: 0 32px;
-        padding-top: 33px;
-        padding-bottom: 27px;
+
+        grid-template-columns: repeat(8, 1fr);
+        column-gap: 2.0625rem;
+        padding: 0 2rem;
+        padding-top: 2.0625rem; // tablet
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        //https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#grid_lines
+
+        @include respond-above(md) {
+            grid-template-columns: 50% repeat(8, 1fr);
+            padding-top: 1.375rem;
+        }
 
         .logo {
             margin: 0;
-            margin-left: 0;
             padding: 0;
 
             // Make the logo go on top of the planet links and use 100% of the viewport width
@@ -163,6 +157,12 @@
                 grid-column-end: 9;
                 grid-row-start: 1;
                 grid-row-end: 2;
+                text-align: center;
+            }
+            @include respond-above(md) {
+                width: 50%;
+                text-align: left;
+                padding-bottom: 1.6875rem;
             }
         }
 
@@ -171,10 +171,12 @@
             font-family: Spartan;
             font-style: normal;
             font-weight: bold;
-            font-size: 11px;
+            font-size: 0.6875rem;
             line-height: 227%; /* identical to box height, or 227% */
-            letter-spacing: 1px;
+            letter-spacing: 0.0625rem;
             text-transform: uppercase;
+            text-align: center;
+            padding-bottom: 1.6875rem;
 
             color: #FFFFFF;
             opacity: 0.75;
@@ -184,10 +186,10 @@
                 content: "";
                 display: block;
                 position: absolute;
-                height: 4px;
+                height: 0.25rem;
                 left: 0;
                 right: 0;
-                top: 3rem;
+                top: 5.5rem;
                 opacity: 0;
             }
 
@@ -196,14 +198,16 @@
                 content: "";
                 display: block;
                 position: absolute;
-                height: 4px;
+                height: 0.25rem;
                 left: 0;
                 right: 0;
-                bottom: 3.75rem;
+                bottom: 4.7rem;
                 opacity: 0;
             }
 
             @include respond-between(xs, md) {
+                padding-top: 2.4375rem;
+
                 &.active {
                     opacity: 1; // font opacity
                 }
@@ -223,16 +227,6 @@
                     }
                 }
             }
-        }
-
-        @include respond-between(xs, md) {
-            // TABLET
-            grid-template-columns: repeat(8, 1fr);
-            gap: 33px;
-            padding: 0 32px;
-            padding-top: 33px;
-            padding-bottom: 27px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
         }
     }
     // planet link .active effect colors for tablet
@@ -291,31 +285,28 @@
     }
 
 
-    // The 'overview', 'internal', 'surface' menu
+    // The 'overview', 'internal', 'surface' menu -------------------------------------------------
     .menu__content {
-
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
         margin: 0;
-        font-size: 9px;
+        font-size: 0.5625rem;
 
         li {
-            padding-top: 20px;
-            padding-bottom: 17px;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-top: 1.25rem;
+            padding-bottom: 1.0625rem;
             text-align: center;
 
             a {
                 font-family: Spartan;
                 font-style: normal;
                 font-weight: bold;
-                font-size: 9px;
-                line-height: 10px;
-                /* identical to box height */
+                font-size: 0.5625rem;
+                line-height: 0.625rem; /* identical to box height */
 
                 text-align: center;
-                letter-spacing: 1.92857px;
+                letter-spacing: 0.120535625rem;
                 text-transform: uppercase;
+                padding: 1.75rem 1.5rem 1.5625rem 1.5rem;
 
                 color: $white;
                 opacity: 0.50;

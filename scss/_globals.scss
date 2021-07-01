@@ -17,11 +17,11 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    line-height: 25px;
+    line-height: 1.5625rem;
     padding: 0;
     margin: 0;
 
-    color: #FFFFFF;
+    color: $white;
 
     a {
         text-decoration: none;
@@ -67,8 +67,8 @@ body {
     overflow: hidden;
 }
 
-//visibility 
 
+//visibility 
 .hide {
     display: none;
 }

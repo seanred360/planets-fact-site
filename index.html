@@ -9,8 +9,6 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=Spartan:wght@400;700&display=swap" rel="stylesheet">
-
-  <script src="https://kit.fontawesome.com/b723e8bcff.js" crossorigin="anonymous"></script>
   
   <link rel="stylesheet" href="/dist/css/style.css">
   
@@ -25,22 +23,37 @@
 
     <!--  MOBILE PLANET LINKS -->
     <nav>
-      <ul class="planet__links flex flex-ai-c flex-jc-sb mobile-only">
-        <li class="logo">The Planets</li>
-        <li class='border-bottom'></li>
-        <li class="toggle-item first flex flex-jc-sb flex-ai-c"><a class='planet-link mercury 0' href="#"><span class='dot mercury'></span>Mercury</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link venus 1' href="#"><span class='dot venus'></span>Venus</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link earth 2' href="#"><span class='dot earth'></span>Earth</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link mars 3' href="#"><span class='dot mars'></span>Mars</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link jupiter 4' href="#"><span class='dot jupiter'></span>Jupiter</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link saturn 5' href="#"><span class='dot saturn'></span>Saturn</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link uranus 6' href="#"><span class='dot uranus'></span>Uranus</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link neptune 7' href="#"><span class='dot neptune'></span>Neptune</a><i class="fas fa-chevron-right"></i></li>
-        <li class="toggle mobile-only"><span class='bars'></span><span class='bars'></span><span class='bars'></span></li>
+      <ul class="planet__links grid mobile-only">
+        <div class="top flex flex-ai-c flex-jc-sb">
+          <h2 class='logo'>The Planets</h2>
+            <div class="toggle mobile-only">
+              <span class='bars'></span>
+              <span class='bars'></span>
+              <span class='bars'></span>
+            </div>
+        </div>
+        <li class="toggle-item blank"></li> <!-- MAKES A GAP AS SHOWN IN THE FIGMA DESIGN MOBILE - MENU-->
+        <li class="toggle-item first flex flex-jc-sb flex-ai-c"><a class='planet-link mercury 0' href="#"><span class='dot mercury'></span>Mercury</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link venus 1' href="#"><span class='dot venus'></span>Venus</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link earth 2' href="#"><span class='dot earth'></span>Earth</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link mars 3' href="#"><span class='dot mars'></span>Mars</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link jupiter 4' href="#"><span class='dot jupiter'></span>Jupiter</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link saturn 5' href="#"><span class='dot saturn'></span>Saturn</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link uranus 6' href="#"><span class='dot uranus'></span>Uranus</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
+        <li class="toggle-item flex flex-jc-sb flex-ai-c"><a class='planet-link neptune 7' href="#"><span class='dot neptune'></span>Neptune</a><img class='chevron' src="assets/icon-chevron.svg" alt=""></li>
       </ul>
 
+      <!-- MOBILE CONTENT MENU -->
+      <nav class='mobile-only'>
+        <ul class='menu__content flex flex-ai-c flex-jc-sb'>
+          <li class='content-link overview mobile content-active'><a href="#">Overview</a></li>
+          <li class='content-link structure mobile'><a href="#">Structure</a></li>
+          <li class='content-link geology mobile'><a href="#">Surface</a></li>
+        </ul>
+      </nav>
+
       <!-- TABLET AND DESKTOP PLANET LINKS -->
-      <div class="planet__links grid grid-ai-c hide-for-mobile">
+      <nav class="planet__links grid grid-ai-c hide-for-mobile">
         <h2 class='logo'>The Planets</h2>
         <a class='planet-link mercury 0 hover' href="#">Mercury</a>
         <a class='planet-link venus 1 hover' href="#">Venus</a>
@@ -50,15 +63,6 @@
         <a class='planet-link saturn 5 hover' href="#">Saturn</a>
         <a class='planet-link uranus 6 hover' href="#">Uranus</a>
         <a class='planet-link neptune 7 hover' href="#">Neptune</a>
-      </div>
-
-      <!-- MOBILE CONTENT MENU -->
-      <nav class='menu__content__wrapper mobile-only'>
-        <ul class='menu__content flex flex-ai-c flex-jc-sb'>
-          <li class='content-link overview mobile content-active'><a href="#">Overview</a></li>
-          <li class='content-link structure mobile'><a href="#">Structure</a></li>
-          <li class='content-link geology mobile'><a href="#">Surface</a></li>
-        </ul>
       </nav>
   </header>
 
