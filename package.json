@@ -1,0 +1,26 @@
+{
+  "name": "planets-fact-site",
+  "version": "1.0.0",
+  "description": "A responsive website that has facts about the planets in our solar system.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanred360/planets-fact-site.git"
+  },
+  "keywords": [
+    "planets",
+    "frontendmentor"
+  ],
+  "author": "Sean Redmon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seanred360/planets-fact-site/issues"
+  },
+  "homepage": "https://github.com/seanred360/planets-fact-site#readme",
+  "dependencies": {
+    "animejs": "^3.2.1"
+  }
+}

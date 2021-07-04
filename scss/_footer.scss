@@ -1,28 +1,39 @@
 footer {
 
     .stats {
-        padding: 0 1.5rem;
         padding-bottom: 2.9375rem;
+
+        @include respond-below(xs) {
+            padding: 0 1.5rem;
+            padding-bottom: 2.9375rem;
+        }
 
         @include respond-above(xs) {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-items: space-between;
             grid-gap: 1.875rem;
-            padding: 0 11.45833333333333%;
+            padding: 0 11.45833333333333vw;
             padding-top: 5.4375rem;
             padding-bottom: 3.5rem;
+        }
 
-            @include respond-between(xs, md) {
-                grid-gap: 0.6875rem;
-                padding: 0 2.4375rem;
-                padding-top: 1.6875rem;
-                padding-bottom: 2.25rem;
-            }
+        @include respond-between(xs, md) {
+            grid-gap: 0.6875rem;
+            padding: 0 2.4375rem;
+            padding-top: 1.6875rem;
+            padding-bottom: 2.25rem;
+        }
+
+        @include respond-above(lg) {
+            padding: 0 10.3125rem;
+            padding-top: 5.4375rem;
+            padding-bottom: 3.5rem;
         }
 
         .stat {
             border: 1px solid #ffffff50;
-            box-sizing: border-box;            
+            box-sizing: content-box;            
 
             @include respond-below(xs) {
                 margin-bottom: 0.5rem;
@@ -41,6 +52,10 @@ footer {
 
             @include respond-between(xs, md) {
                 padding-left: 0.9375rem;
+            }
+
+            @include respond-above(lg) {
+                padding-right: 1.875rem;
             }
         }
 
@@ -85,9 +100,9 @@ footer {
             font-style: normal;
             font-weight: normal;
             font-size: 1.25rem;
-            line-height: 1.625rem;
+            line-height: 1.625rem; /* identical to box height */
             margin: 0;
-            padding-right: 1.5rem; /* identical to box height */
+            padding-right: 1.5rem; 
 
             text-align: right;
             letter-spacing: -0.046875em;

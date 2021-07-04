@@ -1,4 +1,5 @@
 .header {
+    background: $black;
 
     // remove default styling
     ul {
@@ -51,6 +52,9 @@
                 padding-top: 1.25rem;
                 border: 0;
             }
+            &.blank-bottom {
+                height: 100vh;
+            }
 
             &:not(.first) {
                 border-top: 1px solid rgba(255, 255, 255, 0.10);
@@ -102,9 +106,10 @@
         }
 
         .toggle {
-            
+            transition: opacity, transform 0.5s ease-out;
             &.toggle-active {
                 opacity: 0.25;
+                transform: scale(1.1);
             }
         }
 
@@ -134,7 +139,7 @@
     // TABLET AND DESKTOP PLANET LINKS ---------------------------------
     // the links that let you change planets
     .planet__links.hide-for-mobile {
-
+        position: relative;
         grid-template-columns: repeat(8, 1fr);
         column-gap: 2.0625rem;
         padding: 0 2rem;
@@ -142,7 +147,16 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.20);
         //https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#grid_lines
 
+        @include respond-between(xs, md) {
+            column-gap: 0;
+        }
+
         @include respond-above(md) {
+            grid-template-columns: 25% repeat(8, 1fr);
+            padding-top: 1.375rem;
+        }
+
+        @include respond-above(lg) {
             grid-template-columns: 50% repeat(8, 1fr);
             padding-top: 1.375rem;
         }
@@ -160,7 +174,6 @@
                 text-align: center;
             }
             @include respond-above(md) {
-                width: 50%;
                 text-align: left;
                 padding-bottom: 1.6875rem;
             }
@@ -180,6 +193,12 @@
 
             color: #FFFFFF;
             opacity: 0.75;
+            transition: opacity, transform 0.1s ease-in;
+
+            &.active {
+                transform: scale(1.1);
+                opacity: 1;
+            }
 
             &::after {
                 // for tablet only
@@ -208,9 +227,6 @@
             @include respond-between(xs, md) {
                 padding-top: 2.4375rem;
 
-                &.active {
-                    opacity: 1; // font opacity
-                }
                 &.active::after {
                     opacity: 1; // pseudo element opacity
                 }
@@ -220,10 +236,9 @@
                 &:hover {
                     opacity: 1;
     
-                    @include respond-above(md) {
-                        &::before {
-                            opacity: 1;
-                        }
+                    &::before {
+                        opacity: 1;
+                        transition: opacity 0.5s ease-in;
                     }
                 }
             }

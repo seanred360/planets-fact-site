@@ -1,7 +1,6 @@
 html {
     font-size: 100%;
     box-sizing: border-box;
-    height: 100%;
 }
 
 *, *::before, *::after {
@@ -11,7 +10,6 @@ html {
 body {
     display: block;
     position: relative;
-    background: url("/assets/background-stars.svg"), $black;
     font-family: Spartan;
     background-repeat: no-repeat;
     font-style: normal;
@@ -20,6 +18,7 @@ body {
     line-height: 1.5625rem;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 
     color: $white;
 
@@ -30,6 +29,42 @@ body {
     ul {
         list-style: none;
     }
+}
+.sky {
+    background-color: $black;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: -10;
+}
+
+.shootingstars {
+    display: block;
+    position: fixed;
+    width: 150vh;
+    height: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: -1;
+    transform: translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)) rotate(120deg);
+}
+
+.wish {
+    height: 2px;
+    top: 300px;
+    width: 100px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    background-color: white;
+    position: absolute;
+    background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));
+    filter: drop-shadow(0 0 6px white);
+    overflow: hidden;
 }
 
 .flex {

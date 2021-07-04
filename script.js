@@ -7,9 +7,11 @@ const planetLinks = document.querySelectorAll('.planet-link') // planet named me
 let currentPlanet = 'mercury'
 let previousPlanet = '' // we use this to remove color classes before we change to the new planets color scheme
 let currentContent = 'overview'
+let previousContent = ''
 let currentIndex = 0 // keep track of which planet object in the json file 'planetData' we are accessing
 const changePlanet = document.querySelectorAll('.change-planet') // all elements that change based on the currently selected planet
 const changeContent = document.querySelectorAll('.change-content') // all elements that change based on overview structure or surface
+const planetImg = document.querySelector('.planet-img')
 const planetGeoImg = document.querySelector('.planet-geo-img') // the image that appears when 'surface geology' content is active
 const planetData = {
     planets: [
@@ -208,6 +210,203 @@ const planetData = {
       ]
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// ANIMATION SECTION
+///////////////////////////////////////////////////////////////////////////////
+
+// animation elements
+let standupTextWrapper = document.querySelector('.animLetters');
+const statValues = document.querySelectorAll('.stat__value')
+const header = document.querySelector(".header");
+
+///////////////////////////////////////////////////
+// BACKGROUND ANIMATIONS
+// https://codepen.io/sharnajh/pen/WNvppRy?editors=0110 shooting star background idea from here
+///////////////////////////////////////////////////
+
+const shootingstars = document.createElement("div");
+shootingstars.classList.add('shootingstars')
+document.body.insertBefore(shootingstars, header);
+createWish(60) // create 60 divs to be turned into shooting stars
+
+function createWish(quantity) {
+  randomRadius = () => {
+    return Math.random() * 0.7 + 0.6;
+  };
+  getRandomX = () => {
+    return Math.floor(Math.random() * Math.floor(window.innerWidth)).toString();
+  };
+  getRandomY = () => {
+    return Math.floor(Math.random() * Math.floor(window.innerHeight)).toString();
+  };
+
+  for(let i = 0; i < quantity; i++) {
+    const wish = document.createElement("div");
+    wish.classList.add('wish')
+    wish.style.left = `${this.getRandomY()}px`
+    wish.style.top = `${this.getRandomX()}px`
+    shootingstars.appendChild(wish)
+  }
+}
+
+// make the background stars twinkle
+anime({
+  targets: [".star"],
+  opacity: [
+    {
+      duration: 700,
+      value: "0"
+    },
+    {
+      duration: 700,
+      value: "100"
+    }
+  ],
+  easing: "linear",
+  loop: true,
+  delay: (el, i) => 50 * i
+});
+
+// animate the shooting stars
+anime({
+  targets: [".wish"],
+  easing: "linear",
+  loop: true,
+  delay: (el, i) => 1000 * i,
+  opacity: [
+    {
+      duration: 100,
+      value: "1"
+    }
+  ],
+  width: [
+    {
+      value: "150px"
+    },
+    {
+      value: "0px"
+    }
+  ],
+  translateX: 350,
+});
+///////////////////////////////////////////////
+// END OF BACKGROUND ANIMATION SECTION/////////
+///////////////////////////////////////////////
+
+
+// planet title text animation. Thanks to https://tobiasahlin.com/moving-letters/#7
+function standupLettersAnim(textWrapper, targetClass) {
+  // targetClass parameter must NOT have a period first
+  // Wrap every letter in a span
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, `<span class="${targetClass}">$&</span>`);
+  anime({
+    targets: `.${targetClass}`,
+    translateY: ["1.1em", 0],
+    translateX: ["0.55em", 0],
+    translateZ: 0,
+    rotateZ: [180, 0],
+    duration: 750,
+    easing: "easeOutExpo",
+    delay: (el, i) => 50 * i,
+  })
+}
+
+function roundNumbersAnim(target) {
+  anime({
+    targets: target,
+    innerHTML: [0, target.innerHTML],
+    easing: 'linear',
+    round: 1 // Will round the animated value to 1 decimal
+  });
+}
+
+function scaleInAnim(target) {
+  if(flyInAnimComplete) {
+    anime({
+      targets: target,
+      scale: [.5, 1],
+      duration: 500,
+      easing: 'easeOutExpo'
+    });
+  }
+}
+
+// Used for the mobile menu when it opens
+function staggerLeftAnim(target) {
+  anime({
+    targets: target,
+    translateX: [-270, 0],
+    delay: anime.stagger(50), // increase delay by 100ms for each elements.
+  });
+}
+
+let flyInAnimComplete = false // prevent other animations from interrupting
+function flyInAnim(target) {
+  flyInAnimComplete = false
+  anime({
+    targets: target,
+    translateX: [
+      { value: -2000, duration: 0, delay: 0 },
+      { value: 0, duration: 1000, delay: 0 },
+    ],
+    translateY: [
+      { value: 2000, duration: 0, delay: 0 },
+      { value: 0, duration: 1000, delay: 0 },
+    ],
+    scale: [
+      { value: 4, duration: 100, delay: 0, easing: 'easeOutExpo' },
+      { value: 1, duration: 900 },
+    ],
+    easing: 'easeOutElastic(1, .8)',
+    loop: false,
+    complete: () => {
+      flyInAnimComplete = true
+    }
+  });
+}
+
+function flyOutAnim(target) {
+  flyInAnimComplete = false
+  anime({
+    targets: target,
+    translateX: [ // fly out
+      { value: 0, duration: 0, delay: 0 },
+      { value: 200, duration: 1000, delay: 0 },
+    ],
+    translateY: [
+      { value: 0, duration: 0, delay: 0 },
+      { value: -200, duration: 1000, delay: 0 },
+    ],
+    scale: [
+      { value: 0, duration: 200, delay: 0, easing: 'easeOutExpo' },
+    ],
+    backgroundColor: 'white',
+    easing: 'easeOutElastic(1, .8)',
+    loop: false,
+    complete: () => {
+      flyInAnimComplete = true
+      resetAnim(target)
+      flyInAnim(target)
+    }
+  })
+}
+
+// resets an objects transform to default to avoid animation bugs
+function resetAnim(target) {
+  target.style.transform = 'none'
+}
+
+// autoplay animations on load
+function initAnimations() {
+  standupLettersAnim(standupTextWrapper, 'animLetter')
+  roundNumbersAnim(statValues)
+  flyInAnim(planetImg)
+}
+initAnimations()
+
+////////////////////////////////////////////////////////////////////////////////////
+// END OF ANIMATION SECTION
+////////////////////////////////////////////////////////////////////////////////////
 
 // mobile hamburger button behavior
 toggle.addEventListener('click', () => {
@@ -219,6 +418,7 @@ toggle.addEventListener('click', () => {
     toggleItems.forEach(ele => { // toggle items are the mobile only links
         ele.classList.toggle('active')
     })
+    staggerLeftAnim('.toggle-item')
 })
 
 // when we click a link
@@ -240,7 +440,6 @@ planetLinks.forEach(link => {
       })
       link.classList.add('active') // only add active to one link
     }
-
   })
 })
 
@@ -256,9 +455,11 @@ contentLinks.forEach(link => {
 })
 
 function switchPlanet(planetName, index) {
+  if(planetName === currentPlanet) return null // cannot change to the same planet thats already active
     previousPlanet = currentPlanet
     currentPlanet = planetName;
     currentIndex = index
+    flyOutAnim(planetImg)
     switchContent('overview')
     if(planetName) {
         console.log('The current planet is ' + currentPlanet)
@@ -268,8 +469,9 @@ function switchPlanet(planetName, index) {
 
     // change each element to match the currently selected planet
     changePlanet.forEach(ele => {
-        if(ele.classList.contains('planet__title')) {
+        if(ele.classList.contains('animLetters')) {
             ele.innerHTML = planetData.planets[index].name
+            standupLettersAnim(standupTextWrapper, 'animLetter')
         }
         if(ele.classList.contains('rotation')) {
             ele.innerHTML = planetData.planets[index].rotation
@@ -284,6 +486,7 @@ function switchPlanet(planetName, index) {
             ele.innerHTML = planetData.planets[index].temperature
         }
     })
+    roundNumbersAnim(statValues)
 
     // change the coloring to match the current planet only if we are not on mobile
     contentLinks.forEach(link => {
@@ -296,42 +499,48 @@ function switchPlanet(planetName, index) {
 
 // change all elements related to the currently selected content
 function switchContent(content) {
+  previousContent = currentContent
+  currentContent = content
+  if(content === previousContent) return null; // do not allow double pressing the same button
     changeContent.forEach(ele => {
         switch(content) {
-            case 'overview':
-                contentLinks.forEach(link => {
-                    if(link.classList.contains('overview')) {
-                        link.classList.add('content-active')
-                    } else {
-                        link.classList.remove('content-active')
-                    }
-                })
-                if(ele.classList.contains('planet-img')) { 
-                    ele.src = planetData.planets[currentIndex].images.planet
-                    ele.classList.remove(ele.classList[2]) //remove the current planet name class with sizing rules
-                    ele.classList.add(planetData.planets[currentIndex].name.toLowerCase()) //add the new planet name class. The css styles aren't captialized.
+          case 'overview':
+            scaleInAnim(planetImg)
+            contentLinks.forEach(link => {
+                if(link.classList.contains('overview')) {
+                    link.classList.add('content-active')
+                } else {
+                    link.classList.remove('content-active')
                 }
-                planetGeoImg.classList.add('hide')
-                if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].overview.content
-                if(ele.classList.contains('source')) ele.href = planetData.planets[currentIndex].overview.source
-            break;
-            case 'structure':
-                if(ele.classList.contains('planet-img')) { 
-                    ele.src = planetData.planets[currentIndex].images.internal
-                }
-                planetGeoImg.classList.add('hide')
-                if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].structure.content
-                if(ele.classList.contains('source')) ele.href = planetData.planets[currentIndex].structure.source
-            break;
-            case 'geology':
-                if(ele.classList.contains('planet-img')) { 
-                    ele.src = planetData.planets[currentIndex].images.planet
-                }
-                planetGeoImg.src = planetData.planets[currentIndex].images.geology
-                planetGeoImg.classList.remove('hide')
-                if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].geology.content
-                if(ele.classList.contains('source')) ele.href = planetData.planets[currentIndex].geology.source
-            break;
+            })
+            if(ele.classList.contains('planet-img')) { 
+                ele.src = planetData.planets[currentIndex].images.planet
+                ele.classList.remove(ele.classList[2]) //remove the current planet name class with sizing rules
+                ele.classList.add(planetData.planets[currentIndex].name.toLowerCase()) //add the new planet name class. The css styles aren't captialized.
+            }
+            planetGeoImg.classList.add('hide')
+            if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].overview.content
+            if(ele.classList.contains('source')) ele.href = planetData.planets[currentIndex].overview.source
+          break;
+          case 'structure':
+            scaleInAnim(planetImg)
+            if(ele.classList.contains('planet-img')) { 
+                ele.src = planetData.planets[currentIndex].images.internal
+            }
+            planetGeoImg.classList.add('hide')
+            if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].structure.content
+            if(ele.classList.contains('source')) ele.href = planetData.planets[currentIndex].structure.source
+          break;
+          case 'geology':
+            scaleInAnim(planetGeoImg)
+            if(ele.classList.contains('planet-img')) { 
+                ele.src = planetData.planets[currentIndex].images.planet
+            }
+            planetGeoImg.src = planetData.planets[currentIndex].images.geology
+            planetGeoImg.classList.remove('hide')
+            if(ele.classList.contains('planet__paragraph')) ele.innerHTML = planetData.planets[currentIndex].geology.content
+            if(ele.classList.contains('source')) ele.href = planetData.planets[currentIndex].geology.source
+          break;
         }
     })
 }
