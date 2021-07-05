@@ -4,11 +4,11 @@ const body = document.querySelector('body') // this is to disable scrolling when
 const menuContent = document.querySelector('.menu__content') // overview structure surface menu
 const contentLinks = document.querySelectorAll('.content-link') // overview or structure or surface anchor link
 const planetLinks = document.querySelectorAll('.planet-link') // planet named menu anchor links
-let currentPlanet = 'mercury'
+let currentPlanet = 'earth'
 let previousPlanet = '' // we use this to remove color classes before we change to the new planets color scheme
 let currentContent = 'overview'
 let previousContent = ''
-let currentIndex = 0 // keep track of which planet object in the json file 'planetData' we are accessing
+let currentIndex = 2 // keep track of which planet object in the json file 'planetData' we are accessing
 const changePlanet = document.querySelectorAll('.change-planet') // all elements that change based on the currently selected planet
 const changeContent = document.querySelectorAll('.change-content') // all elements that change based on overview structure or surface
 const planetImg = document.querySelector('.planet-img')
@@ -427,7 +427,7 @@ toggle.addEventListener('click', () => {
 // when we click a link
 planetLinks.forEach(link => {
   link.addEventListener('click', () => {
-    switchPlanet(link.classList[1], link.classList[2]) // The [2] class must always be the planet name
+    switchPlanet(link.classList[1], link.classList[2]) // The [1] class must always be the planet name
 
     if(link.parentElement.classList.contains('toggle-item')) { // if on mobile
       toggle.classList.remove('toggle-active')
@@ -451,6 +451,7 @@ planetLinks.forEach(link => {
 contentLinks.forEach(link => {
     link.addEventListener('click', () => {
       if(flyInAnimComplete) { // cannot click buttons and interfere with the animation and cause bugs
+        if(!link.classList.contains('content-active')) // cannot click buttons that are already active
         switchContent(link.classList[1])
         contentLinks.forEach(otherLink => {
             otherLink.classList.remove('content-active')
@@ -468,7 +469,7 @@ function switchPlanet(planetName, index) {
     flyOutAnim(planetImg)
     switchContent('overview')
     if(planetName) {
-        console.log('The current planet is ' + currentPlanet)
+        console.log('The current planet is ' + currentPlanet + currentIndex)
     } else {
         console.error('ERROR planet name not found. The planet name must be the second class on the planet-links element. Do not remove or change this element.')
     }
@@ -477,20 +478,20 @@ function switchPlanet(planetName, index) {
     // The planet image is changed by the flyOutAnim() function, not here
     changePlanet.forEach(ele => {
         if(ele.classList.contains('animLetters')) {
-            ele.innerHTML = planetData.planets[index].name
+            ele.innerHTML = planetData.planets[currentIndex].name
             standupLettersAnim(standupTextWrapper, 'animLetter')
         }
         if(ele.classList.contains('rotation')) {
-            ele.innerHTML = planetData.planets[index].rotation
+            ele.innerHTML = planetData.planets[currentIndex].rotation
         }
         if(ele.classList.contains('revolution')) {
-            ele.innerHTML = planetData.planets[index].revolution
+            ele.innerHTML = planetData.planets[currentIndex].revolution
         }
         if(ele.classList.contains('radius')) {
-            ele.innerHTML = planetData.planets[index].radius
+            ele.innerHTML = planetData.planets[currentIndex].radius
         }
         if(ele.classList.contains('temperature')) {
-            ele.innerHTML = planetData.planets[index].temperature
+            ele.innerHTML = planetData.planets[currentIndex].temperature
         }
     })
     roundNumbersAnim(statValues)
@@ -504,11 +505,11 @@ function switchPlanet(planetName, index) {
     })
 }
 
+planetParagraph = document.querySelector('.planet__paragraph')
 // change all elements related to the currently selected content
 function switchContent(content) {
-  previousContent = currentContent
   currentContent = content
-  if(content === previousContent) return null; // do not allow double pressing the same button
+  previousContent = currentContent
     changeContent.forEach(ele => {
         switch(content) {
           case 'overview':

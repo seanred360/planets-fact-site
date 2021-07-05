@@ -11,7 +11,8 @@
         grid-template-columns: 1fr 1fr;
         align-items: center;
         padding: 0 11.45833333333333vw;
-        padding-top: 7.875rem;
+        //padding-top: 7.875rem;
+        padding-top: 6.25rem;
     }
 
     @include respond-above(lg) {
@@ -154,6 +155,15 @@
             text-align: center;
             text-transform: uppercase;
 
+            h1 {
+                margin: 0;
+                padding: 0;
+            }
+            span {
+                margin: 0;
+                padding: 0;
+            }
+
             @include respond-between(xs, md) {
                 text-align: left;
                 font-size: 3rem;
@@ -163,7 +173,7 @@
             @include respond-above(md) {
                 text-align: left;
                 font-size: 5rem;
-                line-height: 6.5rem;
+                line-height: 0;
             }
         }
     
