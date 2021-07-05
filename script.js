@@ -387,6 +387,7 @@ function flyOutAnim(target) {
       flyInAnimComplete = true
       resetAnim(target)
       flyInAnim(target)
+      planetImg.src=`assets/planet-${currentPlanet}.svg` // change the planet image
     }
   })
 }
@@ -446,11 +447,13 @@ planetLinks.forEach(link => {
 // when we click overview, internal, or surface links
 contentLinks.forEach(link => {
     link.addEventListener('click', () => {
+      if(flyInAnimComplete) { // cannot click buttons and interfere with the animation and cause bugs
         switchContent(link.classList[1])
         contentLinks.forEach(otherLink => {
             otherLink.classList.remove('content-active')
         })
         link.classList.add('content-active')
+      }
     })
 })
 
@@ -468,6 +471,7 @@ function switchPlanet(planetName, index) {
     }
 
     // change each element to match the currently selected planet
+    // The planet image is changed by the flyOutAnim() function, not here
     changePlanet.forEach(ele => {
         if(ele.classList.contains('animLetters')) {
             ele.innerHTML = planetData.planets[index].name
