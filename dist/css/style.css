@@ -396,7 +396,7 @@ body ul {
   letter-spacing: 0.0625rem;
   text-transform: uppercase;
   text-align: center;
-  padding-bottom: 1.6875rem;
+  padding-bottom: 1.375rem;
   color: #FFFFFF;
   opacity: 0.75;
   -webkit-transition: opacity, -webkit-transform 0.1s ease-in;
@@ -776,7 +776,7 @@ body ul {
     /* or 179% */
     text-align: left;
     margin: 0;
-    margin-top: 1.4375rem;
+    margin-top: 1.75rem;
   }
 }
 
@@ -937,7 +937,7 @@ footer .stats {
     justify-items: space-between;
     grid-gap: 1.875rem;
     padding: 0 11.45833333333333vw;
-    padding-top: 4.0625rem;
+    padding-top: 4.1875rem;
     padding-bottom: 3.5rem;
   }
 }
