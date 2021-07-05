@@ -205,8 +205,42 @@ body ul {
   padding: 1rem 1.5rem;
 }
 
-.header .planet__links.mobile-only .top {
+.header .top {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header .top .toggle {
+  -webkit-transition: opacity, -webkit-transform 0.5s ease-out;
+  transition: opacity, -webkit-transform 0.5s ease-out;
+  transition: opacity, transform 0.5s ease-out;
+  transition: opacity, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+
+.header .top .toggle.toggle-active {
+  opacity: 0.25;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.header .top .bars {
+  background: white;
+  display: block;
+  height: 0.1875rem;
+  width: 1.5rem;
+  position: relative;
+  margin: 0 1.5rem;
+}
+
+.header .top .bars:first-child {
+  margin-bottom: 0.25rem;
+}
+
+.header .top .bars:last-child {
+  margin-top: 0.25rem;
+}
+
+.header .top.hide {
+  display: none;
 }
 
 .header .planet__links.mobile-only .planet-link {
@@ -294,40 +328,6 @@ body ul {
 
 .header .planet__links.mobile-only .dot.neptune {
   background: #2d68f0;
-}
-
-.header .planet__links.mobile-only .toggle {
-  -webkit-transition: opacity, -webkit-transform 0.5s ease-out;
-  transition: opacity, -webkit-transform 0.5s ease-out;
-  transition: opacity, transform 0.5s ease-out;
-  transition: opacity, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
-}
-
-.header .planet__links.mobile-only .toggle.toggle-active {
-  opacity: 0.25;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.header .planet__links.mobile-only .bars {
-  background: white;
-  display: block;
-  height: 0.1875rem;
-  width: 1.5rem;
-  position: relative;
-  margin: 0 1.5rem;
-}
-
-.header .planet__links.mobile-only .bars:first-child {
-  margin-bottom: 0.25rem;
-}
-
-.header .planet__links.mobile-only .bars:last-child {
-  margin-top: 0.25rem;
-}
-
-.header .planet__links.mobile-only.hide {
-  display: none;
 }
 
 .header .planet__links.hide-for-mobile {
@@ -988,7 +988,7 @@ footer .stats .stat {
   }
 }
 
-footer .stats h4 {
+footer .stats h3 {
   font-family: Spartan;
   font-style: normal;
   font-weight: bold;
@@ -1003,7 +1003,7 @@ footer .stats h4 {
 }
 
 @media (max-width: 609px) {
-  footer .stats h4 {
+  footer .stats h3 {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1.5rem;
@@ -1011,7 +1011,7 @@ footer .stats h4 {
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
-  footer .stats h4 {
+  footer .stats h3 {
     font-size: 0.5rem;
     letter-spacing: 0.0454545625rem;
     padding-top: 1rem;
@@ -1020,7 +1020,7 @@ footer .stats h4 {
 }
 
 @media (min-width: 1024px) {
-  footer .stats h4 {
+  footer .stats h3 {
     font-size: 0.6875em;
     line-height: 227%;
     /* identical to box height, or 227% */

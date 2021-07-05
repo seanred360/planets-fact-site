@@ -24,11 +24,40 @@
 
     // MOBILE PLANET LINKS ---------------------------------
     // the links that lets you change planets
-    .planet__links.mobile-only {
+    .top {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
 
-        .top {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+        .toggle {
+            transition: opacity, transform 0.5s ease-out;
+            &.toggle-active {
+                opacity: 0.25;
+                transform: scale(1.1);
+            }
         }
+
+        .bars {
+            background: $white;
+            display: block;
+            height: 0.1875rem;
+            width: 1.5rem;
+            position: relative;
+            margin: 0 1.5rem;
+    
+            &:first-child {
+                margin-bottom: 0.25rem;
+            }
+    
+            &:last-child {
+                margin-top: 0.25rem;
+            }
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+
+    .planet__links.mobile-only {
     
         .planet-link {
             font-family: Spartan;
@@ -103,35 +132,6 @@
             &.neptune {
                 background: $neptune;
             }
-        }
-
-        .toggle {
-            transition: opacity, transform 0.5s ease-out;
-            &.toggle-active {
-                opacity: 0.25;
-                transform: scale(1.1);
-            }
-        }
-
-        .bars {
-            background: $white;
-            display: block;
-            height: 0.1875rem;
-            width: 1.5rem;
-            position: relative;
-            margin: 0 1.5rem;
-    
-            &:first-child {
-                margin-bottom: 0.25rem;
-            }
-    
-            &:last-child {
-                margin-top: 0.25rem;
-            }
-        }
-
-        &.hide {
-            display: none;
         }
     }
 
