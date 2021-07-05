@@ -388,6 +388,8 @@ function flyOutAnim(target) {
       resetAnim(target)
       flyInAnim(target)
       planetImg.src=`assets/planet-${currentPlanet}.svg` // change the planet image
+      planetImg.classList.remove(previousPlanet)
+      planetImg.classList.add(currentPlanet)
     }
   })
 }
