@@ -988,7 +988,7 @@ footer .stats .stat {
   }
 }
 
-footer .stats h3 {
+footer .stats h1 {
   font-family: Spartan;
   font-style: normal;
   font-weight: bold;
@@ -1003,7 +1003,7 @@ footer .stats h3 {
 }
 
 @media (max-width: 609px) {
-  footer .stats h3 {
+  footer .stats h1 {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1.5rem;
@@ -1011,7 +1011,7 @@ footer .stats h3 {
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
-  footer .stats h3 {
+  footer .stats h1 {
     font-size: 0.5rem;
     letter-spacing: 0.0454545625rem;
     padding-top: 1rem;
@@ -1020,7 +1020,7 @@ footer .stats h3 {
 }
 
 @media (min-width: 1024px) {
-  footer .stats h3 {
+  footer .stats h1 {
     font-size: 0.6875em;
     line-height: 227%;
     /* identical to box height, or 227% */
