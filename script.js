@@ -427,7 +427,7 @@ toggle.addEventListener('click', () => {
 // when we click a link
 planetLinks.forEach(link => {
   link.addEventListener('click', () => {
-    switchPlanet(link.classList[1], link.classList[2]) // The [1] class must always be the planet name
+    switchPlanet(link.classList[1], link.classList[2]) // The [2] class must always be the planet name
 
     if(link.parentElement.classList.contains('toggle-item')) { // if on mobile
       toggle.classList.remove('toggle-active')
