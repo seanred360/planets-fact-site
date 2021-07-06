@@ -498,10 +498,8 @@ function switchPlanet(planetName, index) {
 
     // change the coloring to match the current planet only if we are not on mobile
     contentLinks.forEach(link => {
-        if(!link.classList.contains('mobile')) {
-            link.classList.remove(previousPlanet)
-            link.classList.add(currentPlanet)
-        }
+      link.classList.remove(previousPlanet)
+      link.classList.add(currentPlanet)
     })
 }
 
