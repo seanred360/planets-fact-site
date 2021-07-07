@@ -1123,4 +1123,15 @@ footer .stats p {
     padding-bottom: 1.6875rem;
   }
 }
+
+@media (min-width: 1400px) {
+  footer .stats p {
+    font-size: 35px;
+    line-height: 3.25rem;
+    text-align: left;
+    letter-spacing: -0.09375rem;
+    padding: 0;
+    padding-bottom: 1.6875rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */
