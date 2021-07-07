@@ -1,4 +1,7 @@
 footer {
+    max-width: 1440px;
+    margin-right: auto;
+    margin-left: auto;
 
     .stats {
         padding-bottom: 2.9375rem;
@@ -129,7 +132,7 @@ footer {
             }
 
             @include respond-above(lg) {
-                font-size: 2.1875rem
+                font-size: 2.1875rem;
                 line-height: 3.25rem;
                 text-align: left;
                 letter-spacing: -0.09375rem;

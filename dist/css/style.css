@@ -594,6 +594,7 @@ body ul {
 .main {
   text-align: center;
   counter-reset: main;
+  max-width: 1440px;
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
@@ -620,6 +621,8 @@ body ul {
   .main {
     padding: 0 10.3125rem;
     padding-top: 7.875rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -966,6 +969,12 @@ body ul {
   }
 }
 
+footer {
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 footer .stats {
   padding-bottom: 2.9375rem;
 }
@@ -1126,7 +1135,7 @@ footer .stats p {
 
 @media (min-width: 1400px) {
   footer .stats p {
-    font-size: 35px;
+    font-size: 2.1875rem;
     line-height: 3.25rem;
     text-align: left;
     letter-spacing: -0.09375rem;

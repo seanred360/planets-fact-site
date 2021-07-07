@@ -1,6 +1,7 @@
 .main {
     text-align: center;
     counter-reset: main; // create a custom counter for the menu__details "01, 02, 03' format 
+    max-width: 1440px;
 
     @include respond-between(xs, md) {
         padding: 0 2.4375rem;
@@ -18,6 +19,8 @@
     @include respond-above(lg) {
         padding: 0 10.3125rem;
         padding-top: 7.875rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     // LEFT SIDE CONTENT ON DESKTOP

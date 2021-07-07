@@ -209,6 +209,7 @@ const planetData = {
         }
       ]
 }
+const planetParagraph = document.querySelector('.planet__paragraph')
 
 ///////////////////////////////////////////////////////////////////////////////
 // ANIMATION SECTION
@@ -218,36 +219,69 @@ const planetData = {
 let standupTextWrapper = document.querySelector('.animLetters');
 const statValues = document.querySelectorAll('.stat__value')
 const header = document.querySelector(".header");
+const shootingstars = document.querySelector('.shootingstars');
+const background = document.querySelector('.background')
+const backgroundGroup = background.childNodes[0]
+let circleArray = []
 
 ///////////////////////////////////////////////////
 // BACKGROUND ANIMATIONS
 // https://codepen.io/sharnajh/pen/WNvppRy?editors=0110 shooting star background idea from here
 ///////////////////////////////////////////////////
 
-const shootingstars = document.createElement("div");
-shootingstars.classList.add('shootingstars')
-document.body.insertBefore(shootingstars, header);
-createWish(60) // create 60 divs to be turned into shooting stars
+function getViewportX() {
+  return Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+}
+
+function getViewportY() {
+  return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+}
+
+const randomRadius = () => {
+  return Math.random() * 1.7 + getViewportX() / 1000;
+};
+const getRandomX = () => {
+  return Math.floor(Math.random() * Math.floor(window.innerWidth)).toString();
+};
+const getRandomY = () => {
+  return Math.floor(Math.random() * Math.floor(window.innerHeight)).toString();
+};
+
+function createCircle(quantity) {
+  //<circle class='star' cx="1155.5" cy="369.5" r="3.5"/>
+  for(let i = 0; i < quantity; i++) {
+    let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
+    circle.cx.baseVal.value = getRandomX()
+    circle.cy.baseVal.value = getRandomY()
+    circle.r.baseVal.value = randomRadius()
+    circle.classList.add('star')
+    circleArray.push(circle)
+    background.childNodes[0].appendChild(circle)
+  }
+  console.log('number of circles is ' + circleArray.length)
+} createCircle(60)
 
 function createWish(quantity) {
-  randomRadius = () => {
-    return Math.random() * 0.7 + 0.6;
-  };
-  getRandomX = () => {
-    return Math.floor(Math.random() * Math.floor(window.innerWidth)).toString();
-  };
-  getRandomY = () => {
-    return Math.floor(Math.random() * Math.floor(window.innerHeight)).toString();
-  };
-
   for(let i = 0; i < quantity; i++) {
     const wish = document.createElement("div");
     wish.classList.add('wish')
-    wish.style.left = `${this.getRandomY()}px`
-    wish.style.top = `${this.getRandomX()}px`
+    wish.style.left = `${getRandomY()}px`
+    wish.style.top = `${getRandomX()}px`
     shootingstars.appendChild(wish)
   }
+} createWish(60) // create 60 divs to be turned into shooting stars
+
+function shuffleCircles() {
+  circleArray.forEach(circle => {
+    circle.cx.baseVal.value = getRandomX()
+    circle.cy.baseVal.value = getRandomY()
+    circle.r.baseVal.value = randomRadius()
+  })
+  background.setAttribute('width', getViewportX())
+  background.setAttribute('height', getViewportY())
 }
+
+window.addEventListener('resize', shuffleCircles);
 
 // make the background stars twinkle
 anime({
@@ -503,7 +537,6 @@ function switchPlanet(planetName, index) {
     })
 }
 
-planetParagraph = document.querySelector('.planet__paragraph')
 // change all elements related to the currently selected content
 function switchContent(content) {
   currentContent = content
