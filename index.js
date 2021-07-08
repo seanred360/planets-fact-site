@@ -4,8 +4,6 @@ const body = document.querySelector('body') // this is to disable scrolling when
 const menuContent = document.querySelector('.menu__content') // overview structure surface menu
 const contentLinks = document.querySelectorAll('.content-link') // overview or structure or surface anchor link
 const planetLinks = document.querySelectorAll('.planet-link') // planet named menu anchor links
-let currentPlanet = 'earth'
-let previousPlanet = '' // we use this to remove color classes before we change to the new planets color scheme
 let currentContent = 'overview'
 let previousContent = ''
 let currentIndex = 2 // keep track of which planet object in the json file 'planetData' we are accessing
@@ -209,241 +207,18 @@ const planetData = {
         }
       ]
 }
-const planetParagraph = document.querySelector('.planet__paragraph')
 
-///////////////////////////////////////////////////////////////////////////////
-// ANIMATION SECTION
-///////////////////////////////////////////////////////////////////////////////
+import { currentPlanet } from "./globals.js"
+import { previousPlanet } from "./globals.js"
+import { statValues } from "./globals.js"
+import { standupTextWrapper } from "./globals.js"
+import { standupLettersAnim } from "./animations.js"
+import { flyOutAnim } from "./animations.js"
+import { scaleInAnim } from "./animations.js"
+import { roundNumbersAnim } from "./animations.js"
+import { flyInAnimComplete } from "./animations.js"
+import { staggerLeftAnim } from "./animations.js"
 
-// animation elements
-let standupTextWrapper = document.querySelector('.animLetters');
-const statValues = document.querySelectorAll('.stat__value')
-const header = document.querySelector(".header");
-const shootingstars = document.querySelector('.shootingstars');
-const background = document.querySelector('.background')
-const backgroundGroup = background.childNodes[0]
-let circleArray = []
-
-///////////////////////////////////////////////////
-// BACKGROUND ANIMATIONS
-// https://codepen.io/sharnajh/pen/WNvppRy?editors=0110 shooting star background idea from here
-///////////////////////////////////////////////////
-
-function getViewportX() {
-  return Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-}
-
-function getViewportY() {
-  return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-}
-
-const randomRadius = () => {
-  return Math.random() * 1.7 + getViewportX() / 1000;
-};
-const getRandomX = () => {
-  return Math.floor(Math.random() * Math.floor(window.innerWidth)).toString();
-};
-const getRandomY = () => {
-  return Math.floor(Math.random() * Math.floor(window.innerHeight)).toString();
-};
-
-function createCircle(quantity) {
-  //<circle class='star' cx="1155.5" cy="369.5" r="3.5"/>
-  for(let i = 0; i < quantity; i++) {
-    let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-    circle.cx.baseVal.value = getRandomX()
-    circle.cy.baseVal.value = getRandomY()
-    circle.r.baseVal.value = randomRadius()
-    circle.classList.add('star')
-    circleArray.push(circle)
-    background.childNodes[0].appendChild(circle)
-  }
-  console.log('number of circles is ' + circleArray.length)
-} createCircle(60)
-
-function createWish(quantity) {
-  for(let i = 0; i < quantity; i++) {
-    const wish = document.createElement("div");
-    wish.classList.add('wish')
-    wish.style.left = `${getRandomY()}px`
-    wish.style.top = `${getRandomX()}px`
-    shootingstars.appendChild(wish)
-  }
-} createWish(60) // create 60 divs to be turned into shooting stars
-
-function shuffleCircles() {
-  circleArray.forEach(circle => {
-    circle.cx.baseVal.value = getRandomX()
-    circle.cy.baseVal.value = getRandomY()
-    circle.r.baseVal.value = randomRadius()
-  })
-  background.setAttribute('width', getViewportX())
-  background.setAttribute('height', getViewportY())
-}
-
-window.addEventListener('resize', shuffleCircles);
-
-// make the background stars twinkle
-anime({
-  targets: [".star"],
-  opacity: [
-    {
-      duration: 700,
-      value: "0"
-    },
-    {
-      duration: 700,
-      value: "100"
-    }
-  ],
-  easing: "linear",
-  loop: true,
-  delay: (el, i) => 50 * i
-});
-
-// animate the shooting stars
-anime({
-  targets: [".wish"],
-  easing: "linear",
-  loop: true,
-  delay: (el, i) => 1000 * i,
-  opacity: [
-    {
-      duration: 100,
-      value: "1"
-    }
-  ],
-  width: [
-    {
-      value: "150px"
-    },
-    {
-      value: "0px"
-    }
-  ],
-  translateX: 350,
-});
-///////////////////////////////////////////////
-// END OF BACKGROUND ANIMATION SECTION/////////
-///////////////////////////////////////////////
-
-
-// planet title text animation. Thanks to https://tobiasahlin.com/moving-letters/#7
-function standupLettersAnim(textWrapper, targetClass) {
-  // targetClass parameter must NOT have a period first
-  // Wrap every letter in a span
-  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, `<span class="${targetClass}">$&</span>`);
-  anime({
-    targets: `.${targetClass}`,
-    translateY: ["1.1em", 0],
-    translateX: ["0.55em", 0],
-    translateZ: 0,
-    rotateZ: [180, 0],
-    duration: 750,
-    easing: "easeOutExpo",
-    delay: (el, i) => 50 * i,
-  })
-}
-
-function roundNumbersAnim(target) {
-  anime({
-    targets: target,
-    innerHTML: [0, target.innerHTML],
-    easing: 'linear',
-    round: 1 // Will round the animated value to 1 decimal
-  });
-}
-
-function scaleInAnim(target) {
-  if(flyInAnimComplete) {
-    anime({
-      targets: target,
-      scale: [.5, 1],
-      duration: 500,
-      easing: 'easeOutExpo'
-    });
-  }
-}
-
-// Used for the mobile menu when it opens
-function staggerLeftAnim(target) {
-  anime({
-    targets: target,
-    translateX: [-270, 0],
-    delay: anime.stagger(50), // increase delay by 100ms for each elements.
-  });
-}
-
-let flyInAnimComplete = false // prevent other animations from interrupting
-function flyInAnim(target) {
-  flyInAnimComplete = false
-  anime({
-    targets: target,
-    translateX: [
-      { value: -2000, duration: 0, delay: 0 },
-      { value: 0, duration: 1000, delay: 0 },
-    ],
-    translateY: [
-      { value: 2000, duration: 0, delay: 0 },
-      { value: 0, duration: 1000, delay: 0 },
-    ],
-    scale: [
-      { value: 4, duration: 100, delay: 0, easing: 'easeOutExpo' },
-      { value: 1, duration: 900 },
-    ],
-    easing: 'easeOutElastic(1, .8)',
-    loop: false,
-    complete: () => {
-      flyInAnimComplete = true
-    }
-  });
-}
-
-function flyOutAnim(target) {
-  flyInAnimComplete = false
-  anime({
-    targets: target,
-    translateX: [ // fly out
-      { value: 0, duration: 0, delay: 0 },
-      { value: 200, duration: 1000, delay: 0 },
-    ],
-    translateY: [
-      { value: 0, duration: 0, delay: 0 },
-      { value: -200, duration: 1000, delay: 0 },
-    ],
-    scale: [
-      { value: 0, duration: 200, delay: 0, easing: 'easeOutExpo' },
-    ],
-    backgroundColor: 'white',
-    easing: 'easeOutElastic(1, .8)',
-    loop: false,
-    complete: () => {
-      flyInAnimComplete = true
-      resetAnim(target)
-      flyInAnim(target)
-      planetImg.src=`assets/planet-${currentPlanet}.svg` // change the planet image
-      planetImg.classList.remove(previousPlanet)
-      planetImg.classList.add(currentPlanet)
-    }
-  })
-}
-
-// resets an objects transform to default to avoid animation bugs
-function resetAnim(target) {
-  target.style.transform = 'none'
-}
-
-// autoplay animations on load
-function initAnimations() {
-  standupLettersAnim(standupTextWrapper, 'animLetter')
-  roundNumbersAnim(statValues)
-  flyInAnim(planetImg)
-}
-initAnimations()
-
-////////////////////////////////////////////////////////////////////////////////////
-// END OF ANIMATION SECTION
-////////////////////////////////////////////////////////////////////////////////////
 
 // mobile hamburger button behavior
 toggle.addEventListener('click', () => {
@@ -497,13 +272,13 @@ contentLinks.forEach(link => {
 
 function switchPlanet(planetName, index) {
   if(planetName === currentPlanet) return null // cannot change to the same planet thats already active
-    previousPlanet = currentPlanet
-    currentPlanet = planetName;
+    previousPlanet.planetName = currentPlanet.planetName
+    currentPlanet.planetName = planetName;
     currentIndex = index
     flyOutAnim(planetImg)
     switchContent('overview')
-    if(planetName) {
-        console.log('The current planet is ' + currentPlanet + currentIndex)
+    if(currentPlanet.planetName) {
+        console.log('The current planet is ' + currentPlanet.planetName)
     } else {
         console.error('ERROR planet name not found. The planet name must be the second class on the planet-links element. Do not remove or change this element.')
     }
@@ -532,8 +307,8 @@ function switchPlanet(planetName, index) {
 
     // change the coloring to match the current planet only if we are not on mobile
     contentLinks.forEach(link => {
-      link.classList.remove(previousPlanet)
-      link.classList.add(currentPlanet)
+      link.classList.remove(previousPlanet.planetName)
+      link.classList.add(currentPlanet.planetName)
     })
 }
 
