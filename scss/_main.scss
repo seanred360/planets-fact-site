@@ -1,7 +1,7 @@
 .main {
     text-align: center;
     counter-reset: main; // create a custom counter for the menu__details "01, 02, 03' format 
-    max-width: 1440px;
+    max-width: 90rem;
 
     @include respond-between(xs, md) {
         padding: 0 2.4375rem;
@@ -12,7 +12,6 @@
         grid-template-columns: 1fr 1fr;
         align-items: center;
         padding: 0 11.45833333333333vw;
-        //padding-top: 7.875rem;
         padding-top: 6.25rem;
     }
 
@@ -27,7 +26,7 @@
     .planet__img__wrapper {
         height: 18.75rem;
         position: relative;
-        //margin-right: auto;
+        margin-right: auto;
         margin-left: auto;
         transition: all .3s ease-in;
 
@@ -37,7 +36,7 @@
         }
 
         @include respond-above(md) {
-            height: 524px;
+            height: 32.75rem;
         }
 
         // PLANET IMAGE SIZES -------------------------------
@@ -116,15 +115,19 @@
             z-index: 2;
 
             @include respond-between(xs, md) {
-                min-height: calc(12.4375rem - 10%);
-                min-width: calc(10.1875rem - 10%);
+                height: 12.4375rem;
+                width: 10.1875rem;
+                max-width: 81.5px;
+                max-height: 99.5px;
                 top: 60%;
             }
 
             @include respond-above(md) {
-                min-height: 12.4375rem;
-                min-width: 10.1875rem;
-                top: 70%;
+                height: 12.4375rem;
+                width: 10.1875rem;
+                max-width: 163px;
+                max-height: 199px;
+                top: 60%;
             }
         }
     }
@@ -189,7 +192,8 @@
             line-height: 200%; /* or 200% */
             
             text-align: center;
-            margin: 1rem 1.5rem 2rem 1.5rem; 
+            margin: 1rem 1.5rem 2rem 1.5rem;
+            max-width: 21.875rem;
     
             color: $white;
 
@@ -203,7 +207,6 @@
             }
     
             @include respond-above(md) {
-                max-width: 21.875rem;
                 height: 9.375rem;
                 font-size: 0.875rem;
                 line-height: 179%; /* or 179% */
@@ -252,12 +255,11 @@
 
         // OVERVIEW STRUCTURE SURFACE MENU
         .menu__content__wrapper {
-
             grid-area: details;
 
             .menu__content {
                 display: block;
-                width: 100%;
+                max-width: 21.875rem;
                 list-style: none;
                 font-family: Spartan;
                 font-style: normal;

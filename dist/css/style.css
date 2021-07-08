@@ -430,8 +430,11 @@ body ul {
   height: 0.25rem;
   left: 0;
   right: 0;
-  bottom: 4.7rem;
+  bottom: 4.5rem;
   opacity: 0;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
@@ -449,8 +452,12 @@ body ul {
   }
   .header .planet__links.hide-for-mobile .planet-link:hover::before {
     opacity: 1;
-    -webkit-transition: opacity 0.5s ease-in;
-    transition: opacity 0.5s ease-in;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transition: opacity, -webkit-transform 0.2s ease-in;
+    transition: opacity, -webkit-transform 0.2s ease-in;
+    transition: opacity, transform 0.2s ease-in;
+    transition: opacity, transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
   }
 }
 
@@ -594,7 +601,7 @@ body ul {
 .main {
   text-align: center;
   counter-reset: main;
-  max-width: 1440px;
+  max-width: 90rem;
 }
 
 @media (min-width: 610px) and (max-width: 1023px) {
@@ -629,6 +636,7 @@ body ul {
 .main .planet__img__wrapper {
   height: 18.75rem;
   position: relative;
+  margin-right: auto;
   margin-left: auto;
   -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
@@ -643,7 +651,7 @@ body ul {
 
 @media (min-width: 1024px) {
   .main .planet__img__wrapper {
-    height: 524px;
+    height: 32.75rem;
   }
 }
 
@@ -721,17 +729,21 @@ body ul {
 
 @media (min-width: 610px) and (max-width: 1023px) {
   .main .planet__img__wrapper .planet-geo-img {
-    min-height: calc(12.4375rem - 10%);
-    min-width: calc(10.1875rem - 10%);
+    height: 12.4375rem;
+    width: 10.1875rem;
+    max-width: 81.5px;
+    max-height: 99.5px;
     top: 60%;
   }
 }
 
 @media (min-width: 1024px) {
   .main .planet__img__wrapper .planet-geo-img {
-    min-height: 12.4375rem;
-    min-width: 10.1875rem;
-    top: 70%;
+    height: 12.4375rem;
+    width: 10.1875rem;
+    max-width: 163px;
+    max-height: 199px;
+    top: 60%;
   }
 }
 
@@ -805,6 +817,7 @@ body ul {
   /* or 200% */
   text-align: center;
   margin: 1rem 1.5rem 2rem 1.5rem;
+  max-width: 21.875rem;
   color: white;
 }
 
@@ -820,7 +833,6 @@ body ul {
 
 @media (min-width: 1024px) {
   .main .planet__section .planet__paragraph {
-    max-width: 21.875rem;
     height: 9.375rem;
     font-size: 0.875rem;
     line-height: 179%;
@@ -876,7 +888,7 @@ body ul {
 
 .main .planet__section .menu__content__wrapper .menu__content {
   display: block;
-  width: 100%;
+  max-width: 21.875rem;
   list-style: none;
   font-family: Spartan;
   font-style: normal;

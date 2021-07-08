@@ -150,7 +150,7 @@ export function standupLettersAnim(textWrapper, targetClass) {
     if(flyInAnimComplete) {
       anime({
         targets: target,
-        scale: [.5, 1],
+        scale: [.9, 1],
         duration: 500,
         easing: 'easeOutExpo'
       });

@@ -221,8 +221,10 @@
                 height: 0.25rem;
                 left: 0;
                 right: 0;
-                bottom: 4.7rem;
+                bottom: 4.5rem;
                 opacity: 0;
+                width: 100%;
+                transform: scaleX(0);
             }
 
             @include respond-between(xs, md) {
@@ -239,7 +241,8 @@
     
                     &::before {
                         opacity: 1;
-                        transition: opacity 0.5s ease-in;
+                        transform: scaleX(1);
+                        transition: opacity, transform 0.2s ease-in;
                     }
                 }
             }
