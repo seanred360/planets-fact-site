@@ -1,6 +1,6 @@
 # Frontend Mentor - Planets fact site solution
 
-This is a solution to the [Planets fact site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Planets fact site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -28,6 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
+![](./screenshot.gif)
 ![](./screenshot.jpg)
 
 ### Links
@@ -59,20 +60,22 @@ function createWish(quantity) {
     return Math.floor(Math.random() * Math.floor(window.innerWidth)).toString();
   };
   getRandomY = () => {
-    return Math.floor(Math.random() * Math.floor(window.innerHeight)).toString();
+    return Math.floor(
+      Math.random() * Math.floor(window.innerHeight)
+    ).toString();
   };
 
-  for(let i = 0; i < quantity; i++) {
+  for (let i = 0; i < quantity; i++) {
     const wish = document.createElement("div");
-    wish.classList.add('wish')
-    wish.style.left = `${this.getRandomY()}px`
-    wish.style.top = `${this.getRandomX()}px`
-    shootingstars.appendChild(wish)
+    wish.classList.add("wish");
+    wish.style.left = `${this.getRandomY()}px`;
+    wish.style.top = `${this.getRandomX()}px`;
+    shootingstars.appendChild(wish);
   }
 }
 
 // Create the number of shooting stars we think looks good.
-createWish(60)
+createWish(60);
 
 // Finally animate the shooting stars with Anime.js
 anime({
@@ -83,16 +86,16 @@ anime({
   opacity: [
     {
       duration: 100,
-      value: "1"
-    }
+      value: "1",
+    },
   ],
   width: [
     {
-      value: "150px"
+      value: "150px",
     },
     {
-      value: "0px"
-    }
+      value: "0px",
+    },
   ],
   translateX: 350,
 });
@@ -100,7 +103,7 @@ anime({
 
 ### Continued development
 
-In the future I would like to add swipe gestures for mobile and keyboard functionality to improve accessability. I would like to make some custom planet SVG files and animate them with Anime.js to look like they are rotating in 3D. The goal was to match the Figma design I was given as much as possible. I want to improve upon the Figma file's design and make the content fit without scrolling on more devices. 
+In the future I would like to add swipe gestures for mobile and keyboard functionality to improve accessability. I would like to make some custom planet SVG files and animate them with Anime.js to look like they are rotating in 3D. The goal was to match the Figma design I was given as much as possible. I want to improve upon the Figma file's design and make the content fit without scrolling on more devices.
 
 ### Useful resources
 
@@ -111,14 +114,12 @@ $breakpoints: (
   xs: 610px,
   sm: 768px,
   md: 1024px,
-  lg: 1400px
+  lg: 1400px,
 );
 
 @mixin respond-above($breakpoint) {
-
   // If the breakpoint exists in the map.
   @if map-has-key($breakpoints, $breakpoint) {
-
     // Get the breakpoint value.
     $breakpoint-value: map-get($breakpoints, $breakpoint);
 
@@ -126,10 +127,9 @@ $breakpoints: (
     @media (min-width: $breakpoint-value) {
       @content;
     }
-  
-  // If the breakpoint doesn't exist in the map.
-  } @else {
 
+    // If the breakpoint doesn't exist in the map.
+  } @else {
     // Log a warning.
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }
@@ -139,17 +139,21 @@ $breakpoints: (
 - [https://tobiasahlin.com/moving-letters/#7] - Tobias Sahlin has many text animations made with Anime.js I will for sure use some of these on other projects. I modified his code so that it could be reused with any text.
 
 ```html
-<h1 class='planet__title'>
+<h1 class="planet__title">
   <span class="animText-wrapper">
     <span class="change-planet animLetters">Mercury</span>
   </span>
 </h1>
 ```
+
 ```js
-  function standupLettersAnim(textWrapper, targetClass) {
+function standupLettersAnim(textWrapper, targetClass) {
   // targetClass parameter must NOT have a period first
   // Wrap every letter in a span
-  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, `<span class="${targetClass}">$&</span>`);
+  textWrapper.innerHTML = textWrapper.textContent.replace(
+    /\S/g,
+    `<span class="${targetClass}">$&</span>`
+  );
   anime({
     targets: `.${targetClass}`,
     translateY: ["1.1em", 0],
@@ -159,10 +163,10 @@ $breakpoints: (
     duration: 750,
     easing: "easeOutExpo",
     delay: (el, i) => 50 * i,
-  })
+  });
 }
 
-standupLettersAnim(standupTextWrapper, 'animLetter')
+standupLettersAnim(standupTextWrapper, "animLetter");
 ```
 
 ## Author
